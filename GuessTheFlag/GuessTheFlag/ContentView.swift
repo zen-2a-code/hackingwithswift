@@ -10,20 +10,32 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var countries = ["Bulgaria", "Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
-
+    
     @State private var currentAnswerFlagIndex = Int.random(in: 0 ... 2)
-
+    @State private var selectedFlagIndex: Int = 0
+    
     @State private var isShowingScoreAlertDisplayed = false
+    @State private var isShowingGameOverAlertDisplayed = false
+    
     @State private var scoreTitle = ""
     @State private var scoreValue = 0
-
+    @State private var turnsCount: Int = 0
+    
+    private var alertMesssage: String {
+        if scoreTitle == "Wrong" {
+            return "That's the flag of \(countries[selectedFlagIndex]).\nYour score is \(scoreValue)"
+        } else {
+            return "Your score is \(scoreValue)"
+        }
+    }
+    
     var body: some View {
         ZStack {
             RadialGradient(stops: [
                 .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
                 .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3),
             ], center: .top, startRadius: 290, endRadius: 400)
-            .ignoresSafeArea()
+                .ignoresSafeArea()
             
             VStack {
                 Text("Guess the flag")
@@ -59,29 +71,43 @@ struct ContentView: View {
                 Text("Score: \(scoreValue)")
                     .font(Font.title.weight(.semibold))
                     .foregroundStyle(.thinMaterial)
-                
             }
+         }
         
-        }
+        .alert("Game over", isPresented: $isShowingGameOverAlertDisplayed, actions: {
+            Button("Restart", role: .confirm) {
+                scoreValue = 0
+                turnsCount = 0
+                scoreTitle = ""
+            }
+        }, message: {
+            Text("The game has ended.\nYour score is: \(scoreValue)")
+                .multilineTextAlignment(.leading)
+        })
         .alert(scoreTitle, isPresented: $isShowingScoreAlertDisplayed) {
             Button("Continue", action: askQuestion)
         } message: {
-            Text("Your score is \(scoreValue)")
+            Text(alertMesssage)
         }
     }
-
+    
     func flagTapped(_ currentFlagIndex: Int) {
+        turnsCount += 1
+        
         if currentFlagIndex == currentAnswerFlagIndex {
             scoreValue += 1
             scoreTitle = "Correct"
         } else {
             scoreValue -= 1
             scoreTitle = "Wrong"
+            selectedFlagIndex = currentFlagIndex
         }
-
+        
         isShowingScoreAlertDisplayed = true
-    }
-
+        
+        if turnsCount >= 8 { isShowingGameOverAlertDisplayed = true }
+     }
+    
     func askQuestion() {
         countries.shuffle()
         currentAnswerFlagIndex = Int.random(in: 0 ... 2)
