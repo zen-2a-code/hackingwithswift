@@ -40,6 +40,7 @@ struct ContentView: View {
                     )
                     .keyboardType(.decimalPad)
                     .focused($isEditingCheckAmountFocussed)
+                    .foregroundStyle(tipPercentage == 0 ? .red : .black)
 
                     Picker("Number of people: ", selection: $numberOfPeople) {
                         ForEach(2 ..< 100) {
