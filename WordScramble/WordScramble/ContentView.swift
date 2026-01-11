@@ -36,7 +36,7 @@ struct ContentView: View {
                             }
                             .buttonStyle(.plain)
                         }
-                     }
+                    }
                 }
       
                 Section {
@@ -57,7 +57,7 @@ struct ContentView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button ("New Game") {
+                    Button("New Game") {
                         startGame()
                     }
                     .fontWeight(.semibold)
@@ -65,12 +65,10 @@ struct ContentView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    
                     Text("Your score is: \(score)")
                         .padding(10)
                         .font(.subheadline)
                         .monospacedDigit()
-                    
                 }
             }
         }
@@ -81,7 +79,8 @@ struct ContentView: View {
         
         guard word.count > 2 else {
             showAlertError(alertTitle: "Your word is too short", alertMessage: "The minimum word length is 3 letters")
-            return }
+            return
+        }
         
         guard word != rootWord else {
             showAlertError(alertTitle: "Good try!", alertMessage: "Try to be more original")
