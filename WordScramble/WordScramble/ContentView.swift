@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var currentWord = ""
+    @State private var score = 0
     
     @State var showAlert = false
     @State private var alertTitle = ""
@@ -54,13 +55,38 @@ struct ContentView: View {
             .alert(alertTitle, isPresented: $showAlert) {} message: {
                 Text(alertMessage)
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button ("New Game") {
+                        startGame()
+                    }
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.red)
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    
+                    Text("Your score is: \(score)")
+                        .padding(10)
+                        .font(.subheadline)
+                        .monospacedDigit()
+                    
+                }
+            }
         }
     }
     
     func addNewWord() {
         let word = currentWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard word.count > 1 else { return }
+        guard word.count > 2 else {
+            showAlertError(alertTitle: "Your word is too short", alertMessage: "The minimum word length is 3 letters")
+            return }
+        
+        guard word != rootWord else {
+            showAlertError(alertTitle: "Good try!", alertMessage: "Try to be more original")
+            return
+        }
         
         guard isOriginal(word: word) else {
             showAlertError(alertTitle: "Word used already", alertMessage: "Be more original")
@@ -78,6 +104,7 @@ struct ContentView: View {
         }
         
         withAnimation {
+            score += word.count
             usedWords.insert(word, at: 0)
         }
         
@@ -85,6 +112,9 @@ struct ContentView: View {
     }
     
     func startGame() {
+        usedWords = []
+        score = 0
+        
         if let startWordsFileUrl = Bundle.main.url(forResource: "start", withExtension: "txt") {
             if let startWordsString = try? String(contentsOf: startWordsFileUrl, encoding: .utf8) {
                 let allWords = startWordsString.components(separatedBy: "\n")
