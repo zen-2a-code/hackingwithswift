@@ -12,7 +12,7 @@ struct ContentView: View {
     @State private var countries = ["Bulgaria", "Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Spain", "UK", "Ukraine", "US"].shuffled()
     
     @State private var currentAnswerFlagIndex = Int.random(in: 0 ... 2)
-    @State private var selectedFlagIndex: Int = 0
+    @State private var selectedFlagIndex: Int?
     
     @State private var isShowingScoreAlertDisplayed = false
     @State private var isShowingGameOverAlertDisplayed = false
@@ -21,9 +21,25 @@ struct ContentView: View {
     @State private var scoreValue = 0
     @State private var turnsCount: Int = 0
     
+    private var getFlagOpacity = { (currentFlagIndex: Int, selectedFlagIndex: Int?) -> Double in
+        if selectedFlagIndex == nil || selectedFlagIndex == currentFlagIndex {
+            return 1.0
+        } else {
+            return 0.25
+        }
+    }
+    
+    private var getFlagScale = { (currentFlagIndex: Int, selectedFlagIndex: Int?) -> Double in
+        if selectedFlagIndex == nil || selectedFlagIndex == currentFlagIndex {
+            return 1
+        } else {
+            return 0.45
+        }
+    }
+    
     private var alertMesssage: String {
         if scoreTitle == "Wrong" {
-            return "That's the flag of \(countries[selectedFlagIndex]).\nYour score is \(scoreValue)"
+            return "That's the flag of \(countries[selectedFlagIndex ?? 0 ]).\nYour score is \(scoreValue)"
         } else {
             return "Your score is \(scoreValue)"
         }
@@ -55,10 +71,15 @@ struct ContentView: View {
                     
                     ForEach(0 ..< 3) { currentFlagIndex in
                         Button {
-                            flagTapped(currentFlagIndex)
+                            withAnimation {
+                                flagTapped(currentFlagIndex)
+                            }
                         } label: {
                             FlagImage(flagName: countries[currentFlagIndex])
                         }
+                        .rotation3DEffect(Angle(degrees: selectedFlagIndex == currentFlagIndex ? 360 : 0), axis: (x: 0, y: 1, z: 0))
+                        .opacity(getFlagOpacity(currentFlagIndex, selectedFlagIndex))
+                        .scaleEffect(getFlagScale(currentFlagIndex, selectedFlagIndex))
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -95,6 +116,7 @@ struct ContentView: View {
         if currentFlagIndex == currentAnswerFlagIndex {
             scoreValue += 1
             scoreTitle = "Correct"
+            selectedFlagIndex = currentFlagIndex
         } else {
             scoreValue -= 1
             scoreTitle = "Wrong"
@@ -109,6 +131,7 @@ struct ContentView: View {
     func askQuestion() {
         countries.shuffle()
         currentAnswerFlagIndex = Int.random(in: 0 ... 2)
+        selectedFlagIndex = nil
     }
 }
 
