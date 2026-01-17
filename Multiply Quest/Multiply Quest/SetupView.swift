@@ -37,7 +37,9 @@ struct SetupView: View {
                 
                 answers = Array(repeating: "", count: questionsCount)
                 
-                isGameSetupDisplayed = false
+                withAnimation {
+                    isGameSetupDisplayed = false
+                }
             }
             .foregroundStyle(.white)
             .buttonStyle(.borderedProminent)

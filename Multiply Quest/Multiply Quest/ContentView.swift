@@ -12,6 +12,8 @@ struct ContentView: View {
     @State private var questions = [Question]()
     @State private var answers : Array<String> = []
     @State private var score: Int = 0
+    @State var disableAnswerCheckButton: Bool = false
+    @FocusState var isAnyTextFiledFocused: Bool
     
     @State private var questionsCount = 5
     @State private var upToNumber = 8
@@ -22,16 +24,23 @@ struct ContentView: View {
             ZStack {
                 if isGameSetupDisplayed {
                     SetupView(upToNumber: $upToNumber, questionsCount: $questionsCount, questions: $questions, answers: $answers, isGameSetupDisplayed: $isGameSetupDisplayed)
+                        .transition(.scale)
                 } else {
-                    QuestionsView(questionCount: questionsCount, questions: $questions, answers: $answers, score: $score)
+                    QuestionsView(questionCount: questionsCount, questions: $questions, answers: $answers, score: $score, disableCheckButton: $disableAnswerCheckButton, isAnyTextFiledFocused: $isAnyTextFiledFocused)
+                        .transition(.scale)
                 }
-            }.toolbar {
+            }
+            
+            .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("New Game") {
-                        isGameSetupDisplayed.toggle()
+                        withAnimation {
+                            isGameSetupDisplayed.toggle()
+                        }
                         answers.removeAll(keepingCapacity: false)
                         questions.removeAll(keepingCapacity: false)
                         score = 0
+                        disableAnswerCheckButton = false
                     }
                     .fontWeight(.semibold)
                     .tint(.red)

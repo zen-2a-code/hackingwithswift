@@ -16,7 +16,7 @@ struct Question {
     var isWrong: Bool = false
     
     init(upTo number: Int) {
-        self.firstNumber = Int.random(in: 2...number)
-        self.secondNumber = Int.random(in: 2...number)
+        self.firstNumber = Int.random(in: 1...number)
+        self.secondNumber = Int.random(in: 1...number)
     }
 }
