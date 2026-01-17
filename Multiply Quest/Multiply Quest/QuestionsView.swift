@@ -10,8 +10,8 @@ import SwiftUI
 struct QuestionsView: View {
     var questionCount: Int
     @Binding var questions: [Question]
-    @State var answers: [String] = []
-    var onAnsweringQuestion: ([String]) -> Void
+    @Binding var answers: [String]
+    @Binding var score: Int
     
     
     var body: some View {
@@ -36,7 +36,15 @@ struct QuestionsView: View {
     
             
             Button("Check answers") {
-                onAnsweringQuestion(answers)
+                for index in 0..<answers.count {
+                    let answerAsInt = Int(answers[index]) ?? 0
+                    
+                    if answerAsInt == questions[index].correctanswer {
+                        score += 1
+                    } else {
+                        questions[index].isWrong = true
+                    }
+                }
             }
                 .buttonStyle(.borderedProminent)
         }
@@ -52,8 +60,9 @@ struct previewQuestion: View {
     var questionCount: Int = 5
     @State var questions: [Question] = [Question(upTo: 12), Question(upTo: 10), Question(upTo: 5), Question(upTo: 8), Question(upTo: 4)]
     @State var answers: [String] = ["2", "15", "12", "16", "8"]
+    @State var score: Int = 3
     
     var body: some View {
-        QuestionsView(questionCount: 5, questions: $questions, answers: answers, onAnsweringQuestion: {[] _ in})
+        QuestionsView(questionCount: 5, questions: $questions, answers: $answers, score: $score)
     }
 }

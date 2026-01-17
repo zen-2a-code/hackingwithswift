@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var answers : Array<String> = []
     @State private var score: Int = 0
     
-    @State private var questionCount = 5
+    @State private var questionsCount = 5
     @State private var upToNumber = 8
     
     
@@ -21,9 +21,9 @@ struct ContentView: View {
         NavigationStack {
             ZStack {
                 if isGameSetupDisplayed {
-                    SetupView(submitSettings: gameSetup)
+                    SetupView(upToNumber: $upToNumber, questionsCount: $questionsCount, questions: $questions, answers: $answers, isGameSetupDisplayed: $isGameSetupDisplayed)
                 } else {
-                    QuestionsView(questionCount: questionCount, questions: $questions, answers: answers, onAnsweringQuestion: onAnsweringQuestions)
+                    QuestionsView(questionCount: questionsCount, questions: $questions, answers: $answers, score: $score)
                 }
             }.toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -43,33 +43,6 @@ struct ContentView: View {
                 }
             }
         }
-    }
-    func gameSetup(highestNum: Int, qCount: Int){
-        upToNumber = highestNum
-        questionCount = qCount
-        
-        for _ in 1...questionCount {
-            questions.append(Question.init(upTo: upToNumber))
-        }
-        
-        answers = Array(repeating: "", count: questionCount)
-        
-        isGameSetupDisplayed = false
-    }
-    
-    func onAnsweringQuestions( studentAnswers: [String]) -> Void {
-        answers = studentAnswers
-        
-        for index in 0..<answers.count {
-            let answerAsInt = Int(answers[index]) ?? 0
-            
-            if answerAsInt == questions[index].correctanswer {
-                score += 1
-            } else {
-                questions[index].isWrong = true
-            }
-        }
-        
     }
 }
 

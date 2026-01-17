@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct SetupView: View {
-    @State var upToNumber = 7
-    @State var questionsCount = 10
-    
-    var submitSettings: (Int, Int) -> Void
+    @Binding var upToNumber: Int
+    @Binding var questionsCount: Int
+    @Binding var questions: [Question]
+    @Binding var answers: [String]
+    @Binding var isGameSetupDisplayed: Bool
 
     var body: some View {
         
@@ -28,7 +29,15 @@ struct SetupView: View {
                 }
             }
             Button("Let's play") {
-                submitSettings(upToNumber, questionsCount)
+            
+                
+                for _ in 1...questionsCount {
+                    questions.append(Question.init(upTo: upToNumber))
+                }
+                
+                answers = Array(repeating: "", count: questionsCount)
+                
+                isGameSetupDisplayed = false
             }
             .foregroundStyle(.white)
             .buttonStyle(.borderedProminent)
@@ -46,16 +55,16 @@ struct SetupView: View {
 }
 
 private struct SetupViewPreviewWrapper: View {
-    @State private var firstNumber: Int = 0
-    @State private var secondNumber: Int = 0
+    @State private var upToNumber: Int = 0
+    @State private var questionsCount: Int = 0
+    @State var questions: [Question] = []
+    @State var answers: [String] = []
+    @State var isGameSetupDisplayed: Bool = true
 
     var body: some View {
-            SetupView { a, b in
-                firstNumber = a
-                secondNumber = b
-            }
+            SetupView(upToNumber: $upToNumber, questionsCount: $questionsCount, questions: $questions, answers: $answers, isGameSetupDisplayed: $isGameSetupDisplayed)
 
-            Text("upToNumber: \(firstNumber)")
-            Text("questionsCount: \(secondNumber)")
+            Text("upToNumber: \(upToNumber)")
+            Text("questionsCount: \(questionsCount)")
     }
 }
