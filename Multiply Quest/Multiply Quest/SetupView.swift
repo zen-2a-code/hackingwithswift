@@ -24,18 +24,19 @@ struct SetupView: View {
                 Picker("Select questions count:", selection: $questionsCount) {
                     Text("5").tag(5)
                     Text("10").tag(10)
-                    Text("15").tag(15)
+                    Text("20").tag(20)
                 }
             }
             Button("Let's play") {
                 submitSettings(upToNumber, questionsCount)
             }
+            .foregroundStyle(.white)
             .buttonStyle(.borderedProminent)
             .fontWeight(.semibold)
-            .tint(.orange)
+            .tint(.brown)
         }
         .scrollContentBackground(.automatic)
-        
+        .toolbarVisibility(.hidden)
 
     }
 }
