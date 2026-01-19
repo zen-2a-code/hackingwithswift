@@ -17,7 +17,6 @@ struct QuestionsView: View {
     
     
     var body: some View {
-        
         VStack {
             List{
                 ForEach(0..<questions.count, id: \.self) {index in

@@ -30,7 +30,6 @@ struct SetupView: View {
             }
             Button("Let's play") {
             
-                
                 for _ in 1...questionsCount {
                     questions.append(Question.init(upTo: upToNumber))
                 }
