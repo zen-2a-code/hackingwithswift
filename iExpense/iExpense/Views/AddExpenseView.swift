@@ -11,7 +11,7 @@ struct AddExpenseView: View {
     
     @Environment(\.dismiss) private var dismiss
     @State private var name = ""
-    @State private var type = "Personal"
+    @State private var type: ExpenseType = .personal
     @State private var amount = 0.0
     let currencyCode: String
     
@@ -24,8 +24,8 @@ struct AddExpenseView: View {
                 TextField("Name", text: $name)
                 
                 Picker("Type", selection: $type) {
-                    ForEach(types, id: \.self) {
-                        Text($0)
+                    ForEach(ExpenseType.allCases) {expenseType in
+                        Text(expenseType.title).tag(expenseType)
                     }
                 }
                 
@@ -36,7 +36,8 @@ struct AddExpenseView: View {
             .toolbar {
                 Button("Save") {
                     let currentExpense = ExpenseItem(name: name, type: type, amount: amount)
-                    expenses.items.append(currentExpense)
+                    
+                    expenses.items.insert(currentExpense, at: 0)
                     dismiss()
                 }
             }

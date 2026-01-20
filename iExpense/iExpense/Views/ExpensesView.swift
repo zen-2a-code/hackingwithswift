@@ -16,11 +16,13 @@ struct ExpensesView: View {
                     VStack(alignment: .leading) {
                         Text(item.name)
                             .font(Font.headline)
-                        Text(item.type)
+                        Text(item.type.title)
                     }
                     Spacer()
 
                     Text(item.amount, format: .currency(code: "currencyCode"))
+                        .foregroundStyle(foregroundStyle(for: item.expenseCategory))
+                        .fontWeight(item.expenseCategory == .expensive ? .bold : .regular)
                 }
             }
             .onDelete(perform: deleteItems)
@@ -29,6 +31,17 @@ struct ExpensesView: View {
 
     func deleteItems(at offsets: IndexSet) {
         allExpenses.items.remove(atOffsets: offsets)
+    }
+
+    func foregroundStyle(for category: ExpenseCategory) -> Color {
+        switch category {
+        case .cheap:
+            .green
+        case .average:
+            .orange
+        case .expensive:
+            .red
+        }
     }
 }
 

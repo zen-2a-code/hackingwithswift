@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            
+            ExpensesView(allExpenses: allExpenses)
             .sheet(isPresented: $showAddExpenseSheet) {
                 AddExpenseView(currencyCode: currencyCode, expenses: allExpenses)
             }
