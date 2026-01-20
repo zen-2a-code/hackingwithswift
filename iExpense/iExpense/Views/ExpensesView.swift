@@ -11,36 +11,41 @@ struct ExpensesView: View {
     var allExpenses: Expenses
     var body: some View {
         List {
-            ForEach(allExpenses.items) { item in
-                HStack {
-                    VStack(alignment: .leading) {
-                        Text(item.name)
-                            .font(Font.headline)
-                        Text(item.type.title)
-                    }
-                    Spacer()
-
-                    Text(item.amount, format: .currency(code: "currencyCode"))
-                        .foregroundStyle(foregroundStyle(for: item.expenseCategory))
-                        .fontWeight(item.expenseCategory == .expensive ? .bold : .regular)
+            Section("Personal") {
+                let personalItems = filterItems(byType: .personal)
+                
+                ForEach(personalItems){ item in
+                    ExpenseRowView(item: item)
+                } .onDelete {offsets in
+                    deleteItems(in: personalItems, at: offsets)
                 }
             }
-            .onDelete(perform: deleteItems)
+            
+            Section("Business") {
+                let businesItems = filterItems(byType: .business)
+                ForEach(filterItems(byType: .business)){ item in
+                    ExpenseRowView(item: item)
+                }
+                .onDelete {offsets in
+                    deleteItems(in: businesItems, at: offsets)
+                }
+            }
         }
     }
-
-    func deleteItems(at offsets: IndexSet) {
-        allExpenses.items.remove(atOffsets: offsets)
+    
+    func deleteItems(in items: [ExpenseItem], at offsets: IndexSet) {
+        let idsToDelete = offsets.map {index in
+            items[index].id
+        }
+        
+        allExpenses.items.removeAll {item in
+            idsToDelete.contains(item.id)
+        }
     }
-
-    func foregroundStyle(for category: ExpenseCategory) -> Color {
-        switch category {
-        case .cheap:
-            .green
-        case .average:
-            .orange
-        case .expensive:
-            .red
+    
+    func filterItems(byType itemType: ExpenseType) -> [ExpenseItem]{
+        return allExpenses.items.filter{item in
+            item.type == itemType
         }
     }
 }
