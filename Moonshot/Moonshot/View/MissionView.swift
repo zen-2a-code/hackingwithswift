@@ -27,7 +27,7 @@ struct MissionView: View {
             } else {
                 fatalError("Missing Astronaut for \(missionCrewMember.name)")
             }
-         }
+        }
     }
     
     var body: some View {
@@ -58,7 +58,7 @@ struct MissionView: View {
                 
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(crew, id: \.role) {crewMember in
+                        ForEach(crew, id: \.role) { crewMember in
                             NavigationLink {
                                 AstronautView(astronaut: crewMember.astronaut)
                             } label: {
