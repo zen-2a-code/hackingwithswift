@@ -29,4 +29,14 @@ struct Mission: Codable, Identifiable {
     var formatedLunchDate: String {
         launchDate?.formatted(date: .abbreviated, time: .omitted) ?? "N/A"
     }
+    
+    var formatedLunchDateBulgarian: String {
+        guard let launchDate else {
+            return "N/A"
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        return formatter.string(from: launchDate)
+    }
 }

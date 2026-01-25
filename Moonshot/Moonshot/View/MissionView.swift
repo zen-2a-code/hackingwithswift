@@ -8,11 +8,6 @@
 import SwiftUI
 
 struct MissionView: View {
-    struct CrewMember {
-        let role: String
-        let astronaut: Astronaut
-    }
-    
     let mission: Mission
     let astronauts: [String: Astronaut]
     let crew: [CrewMember]
@@ -40,6 +35,9 @@ struct MissionView: View {
                         width * 0.6
                     }
                     .padding(.top)
+                
+                Text("Lunch date: \(mission.formatedLunchDateBulgarian)")
+                    .foregroundStyle(.secondary)
   
                 VStack(alignment: .leading) {
                     DividerLine()
@@ -55,39 +53,11 @@ struct MissionView: View {
                     DividerLine()
                 }
                 .padding(.horizontal)
-                
-                ScrollView(.horizontal) {
-                    HStack {
-                        ForEach(crew, id: \.role) { crewMember in
-                            NavigationLink {
-                                AstronautView(astronaut: crewMember.astronaut)
-                            } label: {
-                                HStack {
-                                    Image(crewMember.astronaut.id)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 104, height: 72)
-                                        .clipShape(.rect(cornerRadius: 30))
-                                        .overlay {
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .strokeBorder(.white.opacity(0.5))
-                                        }
-                                    
-                                    VStack(alignment: .leading) {
-                                        Text(crewMember.astronaut.name)
-                                            .foregroundStyle(.white)
-                                        Text(crewMember.role)
-                                            .foregroundStyle(.white.opacity(0.5))
-                                    }
-                                }
-                                .padding(.horizontal)
-                            }
-                        }
-                    }
-                }
-            }
+             }
             .padding(.bottom)
-        }
+            
+            CrewScrollView(crew: crew)
+         }
         .navigationTitle("\(mission.displayName)")
         .navigationBarTitleDisplayMode(.inline)
         .background(.darkBackground)
