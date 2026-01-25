@@ -35,6 +35,7 @@ struct MissionsListView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(.lightBackground)
                     }
+                    .frame(minHeight: 80)
                     .clipShape(.rect(cornerRadius: 10))
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
