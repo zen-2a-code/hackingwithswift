@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MissionView: View {
+struct MissionDetailsView: View {
     let mission: Mission
     let astronauts: [String: Astronaut]
     let crew: [CrewMember]
@@ -68,6 +68,6 @@ struct MissionView: View {
     let missions: [Mission] = Bundle.main.decode("missions.json")
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     
-    return MissionView(mission: missions[0], astronauts: astronauts)
+    return MissionDetailsView(mission: missions[0], astronauts: astronauts)
         .preferredColorScheme(.dark)
 }
