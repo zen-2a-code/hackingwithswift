@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct MissionsGridView: View {
+    let missions: [Mission]
+    let astronauts: [String: Astronaut]
+    
     private let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
-    let missions: [Mission]
-    let astronauts: [String: Astronaut]
+
     var body: some View {
         LazyVGrid(columns: columns) {
             ForEach(missions) { mission in

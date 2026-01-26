@@ -20,8 +20,9 @@ struct MissionsListView: View {
                         Image(mission.image)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 150, height: 50)
-                            .padding(5)
+                            .frame(width: 150, height: 75)
+                            .padding(.vertical, 5)
+                            
                         
                         VStack {
                             Text(mission.displayName)
@@ -31,7 +32,6 @@ struct MissionsListView: View {
                                 .font(.caption)
                                 .foregroundStyle(.white.opacity(0.5))
                         }
-                        .padding(.horizontal)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(.lightBackground)
                     }
@@ -45,7 +45,6 @@ struct MissionsListView: View {
             }
         }
         .padding([.horizontal, .bottom])
-        .labelsHidden()
     }
 }
 
