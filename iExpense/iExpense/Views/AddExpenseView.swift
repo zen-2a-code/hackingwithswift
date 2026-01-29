@@ -19,7 +19,6 @@ struct AddExpenseView: View {
     var expenses: Expenses
     
     var body: some View {
-        NavigationStack {
             Form {
                 TextField("Name", text: $name)
                 
@@ -32,6 +31,7 @@ struct AddExpenseView: View {
                 TextField("Amount", value:$amount, format: .currency(code: currencyCode))
                     .keyboardType(.decimalPad)
             }
+            .navigationBarBackButtonHidden(true)
             .navigationTitle("Add new expense")
             .toolbar {
                 Button("Save") {
@@ -41,7 +41,7 @@ struct AddExpenseView: View {
                     dismiss()
                 }
             }
-        }
+        
     }
 }
 
