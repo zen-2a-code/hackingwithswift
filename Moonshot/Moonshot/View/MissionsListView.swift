@@ -13,9 +13,7 @@ struct MissionsListView: View {
     var body: some View {
         LazyVStack {
             ForEach(missions) { mission in
-                NavigationLink {
-                    MissionDetailsView(mission: mission, astronauts: astronauts)
-                } label: {
+                NavigationLink(value: mission) {
                     HStack(spacing: 0) {
                         Image(mission.image)
                             .resizable()
@@ -44,6 +42,9 @@ struct MissionsListView: View {
                 }
             }
         }
+        .navigationDestination(for: Mission.self) {mission in
+            MissionDetailsView(mission: mission, astronauts: astronauts)
+        }
         .padding([.horizontal, .bottom])
     }
 }
@@ -52,5 +53,7 @@ struct MissionsListView: View {
 #Preview {
      let missions: [Mission] = Bundle.main.decode("missions.json")
      let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
-    return MissionsListView(missions: missions, astronauts: astronauts)
+    return NavigationStack {
+        MissionsListView(missions: missions, astronauts: astronauts)
+    }
 }
