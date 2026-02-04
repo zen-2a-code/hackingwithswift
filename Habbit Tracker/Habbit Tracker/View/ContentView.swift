@@ -15,14 +15,14 @@ struct ContentView: View {
             List {
                 ForEach(habbits.habbits) { habbit in
                     NavigationLink(value: habbit) {
-                        HStack(spacing: 30){
+                        HStack(spacing: 30) {
                             Text("\(habbit.title)")
                             Spacer()
                             Text("\(habbit.completionCount)")
                         }
                     }
                 }
-                .onDelete {indexSet in
+                .onDelete { indexSet in
                     habbits.deleteHabbit(indexSet)
                 }
             }
@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
                 .presentationDetents([.fraction(0.7), .large])
             }
-            .navigationDestination(for: Habbit.self ){ currentHabbit in
+            .navigationDestination(for: Habbit.self) { currentHabbit in
                 HabbitDetailsView(habbit: currentHabbit, habbits: habbits)
             }
             .toolbar {

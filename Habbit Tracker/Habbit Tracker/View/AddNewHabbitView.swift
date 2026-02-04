@@ -16,17 +16,16 @@ struct AddNewHabbitView: View {
         Form {
             TextField("Enter Title", text: $title)
             TextField("Enter Description (Optional)", text: $description)
-            
         }
         .presentationDragIndicator(.visible)
         .navigationTitle("Add new Habbit")
         .toolbar {
-            ToolbarItem(placement: .topBarLeading ) {
+            ToolbarItem(placement: .topBarLeading) {
                 Button("Cancel", systemImage: "xmark", role: .destructive) {
                     dismiss()
                 }
             }
-            
+
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Save", role: .confirm) {
                     let newHabbit = Habbit(title: title, description: description == "" ? nil : description)
@@ -39,7 +38,7 @@ struct AddNewHabbitView: View {
 }
 
 #Preview {
-    let habbits: Habbits = Habbits()
+    let habbits = Habbits()
     NavigationStack {
         AddNewHabbitView(habbits: habbits)
     }
