@@ -40,6 +40,7 @@ struct HabbitDetailsView: View {
                 Text("\(habbitCount)")
                     .font(.title3)
                     .foregroundStyle(.secondary)
+                    .contentTransition(.numericText())
                 
                 LottieView(animation: LottieAnimation.named("atom"))
                     .playbackMode(playbackMode)
@@ -47,13 +48,19 @@ struct HabbitDetailsView: View {
                     .frame(height: 170)
                     .onTapGesture {
                         playbackMode = .playing(.toProgress(Double.random(in: 0 ..< 100), loopMode: .playOnce))
+                        withAnimation {
+                            habbits.habbits[currentHabbitIndex].completionCount += 1
+                        }
                     }
                     .onAppear {
                         playbackMode = .playing(.toProgress(1, loopMode: .playOnce))
                     }
                 
                 Button(habbitCount > 0 ? "Let's do it again" : "Let's do it") {
-                    habbits.habbits[currentHabbitIndex].completionCount += 1
+                    withAnimation {
+                        habbits.habbits[currentHabbitIndex].completionCount += 1
+                    }
+                    playbackMode = .playing(.toProgress(Double.random(in: 0 ..< 100), loopMode: .playOnce))
                 }
                 
                 if !hasDesctiption {
