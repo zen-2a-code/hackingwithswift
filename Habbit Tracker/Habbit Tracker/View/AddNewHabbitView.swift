@@ -12,9 +12,18 @@ struct AddNewHabbitView: View {
     @State private var title: String = ""
     @State private var description: String = ""
     @Environment(\.dismiss) private var dismiss
+    
+    var isTitleValid: Bool {
+        title.trimmingCharacters(in: .whitespacesAndNewlines).count >= 3
+    }
     var body: some View {
         Form {
-            TextField("Enter Title", text: $title)
+            TextField("Enter Title (min 3 characters)", text: $title)
+            if !isTitleValid && !title.isEmpty {
+                Text("Title must be at least 3 characters")
+                    .font(.caption)
+                    .foregroundStyle(.red)
+            }
             TextField("Enter Description (Optional)", text: $description)
         }
         .presentationDragIndicator(.visible)
@@ -32,6 +41,7 @@ struct AddNewHabbitView: View {
                     habbits.habbits.insert(newHabbit, at: 0)
                     dismiss()
                 }
+                .disabled(!isTitleValid)
             }
         }
     }

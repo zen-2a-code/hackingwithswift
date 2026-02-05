@@ -36,8 +36,16 @@ struct ContentView: View {
                 HabbitDetailsView(habbit: currentHabbit, habbits: habbits)
             }
             .toolbar {
-                Button("Add habbit", systemImage: "plus") {
-                    showAddHabbitSheet = true
+                if !habbits.habbits.isEmpty {
+                    ToolbarItem(placement: .topBarLeading) {
+                        EditButton()
+                    }
+                }
+                
+                ToolbarItem {
+                    Button("Add habbit", systemImage: "plus") {
+                        showAddHabbitSheet = true
+                    }
                 }
             }
             .navigationTitle("Habbit tracker")
