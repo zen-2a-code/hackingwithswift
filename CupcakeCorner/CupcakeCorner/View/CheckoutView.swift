@@ -9,8 +9,9 @@ import SwiftUI
 
 struct CheckoutView: View {
     var order: Order
-    @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var showAlert = false
 
     var body: some View {
         ScrollView {
@@ -38,8 +39,8 @@ struct CheckoutView: View {
         .navigationTitle("Check out")
         .navigationBarTitleDisplayMode(.inline)
         .scrollBounceBehavior(.basedOnSize)
-        .alert("Thank you", isPresented: $showingConfirmation) {} message: {
-            Text(confirmationMessage)
+        .alert(alertTitle, isPresented: $showAlert) {} message: {
+            Text(alertMessage)
         }
     }
     
@@ -49,7 +50,6 @@ struct CheckoutView: View {
             return
         }
         
-//        let url = URL(string: "https://reqres.in/api/cupcakes")!
         let url = URL(string: "https://httpbin.org/post")!
         var request = URLRequest(url: url)
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -66,10 +66,15 @@ struct CheckoutView: View {
             
             let decodedOrderFromRequest = try JSONDecoder().decode(HttpBinResponse.self, from: data)
             
-            confirmationMessage = "Your order for \(decodedOrderFromRequest.json.quantity)x \(Order.types[decodedOrderFromRequest.json.typeIndex].lowercased()) cupcakes is on its way!"
+            alertMessage = "Your order for \(decodedOrderFromRequest.json.quantity)x \(Order.types[decodedOrderFromRequest.json.typeIndex].lowercased()) cupcakes is on its way!"
             
-            showingConfirmation = true
+            showAlert = true
         } catch {
+            if let _ = error as? URLError{
+                alertTitle = "No network"
+                alertMessage = "Please check your internet connection or disable Airplane mode"
+                showAlert = true
+            }
             print("Checkout failed: \(error.localizedDescription)")
         }
     }

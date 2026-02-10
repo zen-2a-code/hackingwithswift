@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var order = Order()
+    @State private var order = Order.loadData()
     var body: some View {
         NavigationStack {
             Form {
@@ -18,7 +18,6 @@ struct ContentView: View {
                             Text(Order.types[index])
                         }
                     }
-                    
                     Stepper("Number of cakes: \(order.quantity)",value: $order.quantity, in: 3...20)
                 }
                 

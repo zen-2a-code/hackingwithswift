@@ -42,13 +42,32 @@ class Order: Codable {
     var extraFrosting = false
     var addSprinkles = false
     
-    var name = ""
-    var streetAddress = ""
-    var city = ""
-    var zip = ""
+    var name = "" {
+        didSet {
+            self.saveData()
+        }
+    }
+    var streetAddress = "" {
+        didSet {
+            self.saveData()
+        }
+    }
+        
+    var city = "" {
+        didSet {
+            self.saveData()
+        }
+    }
+        
+    var zip = "" {
+        didSet {
+            self.saveData()
+        }
+    }
     
     var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+        
+        if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || streetAddress.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || city.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || zip.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             return false
         }
 
@@ -70,5 +89,26 @@ class Order: Codable {
         }
         
         return cost
+    }
+    
+    func saveData() {
+        if let encoded = try? JSONEncoder().encode(self) {
+            UserDefaults.standard.set(encoded, forKey: "order")
+        }
+    }
+    
+    static func loadData() -> Order {
+        let newOrder = Order()
+        
+        if let encoudedData =  UserDefaults.standard.data(forKey: "order") {
+            if let decodedOrder = try? JSONDecoder().decode(Order.self, from: encoudedData) {
+                newOrder.name = decodedOrder.name
+                newOrder.streetAddress = decodedOrder.streetAddress
+                newOrder.city = decodedOrder.city
+                newOrder.zip = decodedOrder.zip
+            }
+        }
+        
+        return newOrder
     }
 }
