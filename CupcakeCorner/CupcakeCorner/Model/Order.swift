@@ -100,7 +100,7 @@ class Order: Codable {
     static func loadData() -> Order {
         let newOrder = Order()
         
-        if let encoudedData =  UserDefaults.standard.data(forKey: "order") {
+        if let encoudedData = UserDefaults.standard.data(forKey: "order") {
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: encoudedData) {
                 newOrder.name = decodedOrder.name
                 newOrder.streetAddress = decodedOrder.streetAddress
