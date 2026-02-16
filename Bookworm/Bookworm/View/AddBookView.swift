@@ -51,6 +51,7 @@ struct AddBookView: View {
                         dismiss()
                     }
                 }
+                .disabled(!Book.isValidBook(title: title, author: author))
             }
             .navigationTitle("Add Book")
             

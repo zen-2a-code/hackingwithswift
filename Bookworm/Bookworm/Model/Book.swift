@@ -23,5 +23,13 @@ class Book {
         self.review = review
         self.rating = rating
     }
+    
+    static func isValidBook(title: String, author: String) -> Bool {
+        if title.isEmpty || author.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
