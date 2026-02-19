@@ -31,6 +31,10 @@ struct DetailView: View {
                     .clipShape(.capsule)
                     .offset(x: -5, y: -5)
             }
+            
+            Text("Book added: \(book.date.formatted(date: .long, time: .omitted))")
+                .font(.caption)
+                .foregroundStyle(.black.opacity(0.8))
             Text(book.author)
                 .font(.title)
                 .foregroundStyle(.secondary)
