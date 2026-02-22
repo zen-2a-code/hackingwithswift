@@ -19,8 +19,6 @@ struct ContentView: View {
         .task {
             let fetchService = FetchService()
             users = await fetchService.fetchUsers()
-            
-            print(users)
         }
     }
 }

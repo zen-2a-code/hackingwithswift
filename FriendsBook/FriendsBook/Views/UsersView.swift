@@ -27,7 +27,8 @@ struct UsersView: View {
             }
         }
         .navigationDestination(for: User.self) { user in
-            Text(user.email)
+            UserDetails(user: user)
+//                .padding(.horizontal, 20)
         }
     }
 }
