@@ -15,7 +15,9 @@ enum BundleJSONLoader {
         
         do {
             let data = try Data(contentsOf: url)
-            return try JSONDecoder().decode(type.self, from: data)
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            return try decoder.decode(type.self, from: data)
             
         } catch {
             fatalError("Failed to load/decode from url: \(url)")
