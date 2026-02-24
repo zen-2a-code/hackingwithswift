@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct UsersView: View {
-    @Binding var users: [User]
+    var users: [User]
     var body: some View {
         List(users) {user in
             NavigationLink(value: user) {
@@ -37,6 +37,6 @@ struct UsersView: View {
     @Previewable @State var users: [User] = BundleJSONLoader.load("sample.json", as: [User].self)
     
     NavigationStack {
-        UsersView(users: $users)
+        UsersView(users: users)
     }
 }
