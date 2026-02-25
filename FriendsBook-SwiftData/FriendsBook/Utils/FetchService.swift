@@ -26,5 +26,4 @@ struct FetchService {
         
         return users
         }
-    
     }

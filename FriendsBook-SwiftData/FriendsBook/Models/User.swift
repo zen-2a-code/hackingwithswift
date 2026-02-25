@@ -9,7 +9,7 @@ import SwiftData
 import Foundation
 
 @Model
-class User: Identifiable, Codable, Hashable {
+class User: Codable, Hashable {
     
     enum CodingKeys: CodingKey {
         case id, isActive, name, age, company, email, address, about, registered, tags, friends

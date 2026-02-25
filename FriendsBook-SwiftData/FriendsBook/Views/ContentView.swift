@@ -20,7 +20,6 @@ struct ContentView: View {
             }
         }
         .task {
-            
             if users.isEmpty {
                 let fetchService = FetchService()
                 let fetchedUsers = await fetchService.fetchUsers()
