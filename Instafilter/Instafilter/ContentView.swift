@@ -20,6 +20,7 @@ struct ContentView: View {
     @State private var selectedItem: PhotosPickerItem?
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilters = false
+    private var shouldDisableButton: Bool { selectedItem == nil }
     let context = CIContext()
 
     var body: some View {
@@ -44,12 +45,14 @@ struct ContentView: View {
                 HStack {
                     Text("Intensity")
                     Slider(value: $filterIntensity)
+                        .disabled(shouldDisableButton)
                         .onChange(of: filterIntensity, applyProcessing)
                 }
                 .padding(.vertical)
 
                 HStack {
                     Button("Change Filter", action: changeFilter)
+                        .disabled(shouldDisableButton)
 
                     Spacer()
 
