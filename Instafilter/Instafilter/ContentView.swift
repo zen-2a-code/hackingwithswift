@@ -17,11 +17,12 @@ struct ContentView: View {
     
     @State private var processedImage: Image?
     @State private var filterIntensity = 0.5
-    @State private var filterRadius = 0.5
+    @State private var filterRadius = 10.0
     @State private var selectedItem: PhotosPickerItem?
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilters = false
     private var shouldDisableButton: Bool { selectedItem == nil }
+    @State private var beginImage: CIImage?
     let context = CIContext()
 
     var body: some View {
@@ -53,7 +54,7 @@ struct ContentView: View {
                 
                 HStack {
                     Text("Radius")
-                    Slider(value: $filterRadius, in: 0...360)
+                    Slider(value: $filterRadius, in: 0...1000)
                         .disabled(shouldDisableButton)
                         .onChange(of: filterRadius, applyProcessing)
                 }
@@ -79,6 +80,9 @@ struct ContentView: View {
                 Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
                 Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
                 Button("Vignette") { setFilter(CIFilter.vignette()) }
+                Button("Bloom") { setFilter(CIFilter.bloom()) }
+                Button("Twirl Distortion") { setFilter(CIFilter.twirlDistortion()) }
+                Button("Comic Effect") { setFilter(CIFilter.comicEffect()) }
             }
             .padding([.horizontal, .bottom])
         }
@@ -88,9 +92,13 @@ struct ContentView: View {
     
     @MainActor func setFilter(_ filter: CIFilter) {
         currentFilter = filter
+//        print(currentFilter.name)
+//        print(currentFilter.inputKeys)
+        filterIntensity = 0.5
+        filterRadius = 10
         filterCount += 1
         
-        if filterCount >= 3 {
+        if filterCount >= 20 {
             requestReview()
         }
         loadImage()
@@ -101,7 +109,7 @@ struct ContentView: View {
             guard let imageData = try await selectedItem?.loadTransferable(type: Data.self) else { return }
             guard let inputImage = UIImage(data: imageData) else { return }
 
-            let beginImage = CIImage(image: inputImage)
+            beginImage = CIImage(image: inputImage)
             currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
             applyProcessing()
         }
@@ -112,6 +120,13 @@ struct ContentView: View {
         if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
         if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey) }
         if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
+        if inputKeys.contains(kCIInputAngleKey) {currentFilter.setValue(filterIntensity * .pi * 2, forKey: kCIInputAngleKey)}
+        if currentFilter.inputKeys.contains(kCIInputCenterKey) {
+             currentFilter.setValue(
+                CIVector(x: beginImage?.extent.midX ?? 0.0, y: beginImage?.extent.midY ?? 0.0),
+                 forKey: kCIInputCenterKey
+             )
+         }
 
         guard let outputImage = currentFilter.outputImage else { return }
         guard let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else { return }
