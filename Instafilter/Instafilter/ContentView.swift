@@ -17,6 +17,7 @@ struct ContentView: View {
     
     @State private var processedImage: Image?
     @State private var filterIntensity = 0.5
+    @State private var filterRadius = 0.5
     @State private var selectedItem: PhotosPickerItem?
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilters = false
@@ -48,7 +49,15 @@ struct ContentView: View {
                         .disabled(shouldDisableButton)
                         .onChange(of: filterIntensity, applyProcessing)
                 }
-                .padding(.vertical)
+                .padding(.top)
+                
+                HStack {
+                    Text("Radius")
+                    Slider(value: $filterRadius, in: 0...360)
+                        .disabled(shouldDisableButton)
+                        .onChange(of: filterRadius, applyProcessing)
+                }
+                .padding(.bottom)
 
                 HStack {
                     Button("Change Filter", action: changeFilter)
@@ -101,7 +110,7 @@ struct ContentView: View {
         let inputKeys = currentFilter.inputKeys
 
         if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
-        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
+        if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterRadius, forKey: kCIInputRadiusKey) }
         if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
 
         guard let outputImage = currentFilter.outputImage else { return }
