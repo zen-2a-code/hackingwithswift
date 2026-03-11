@@ -11,10 +11,10 @@ struct User: Comparable, Identifiable {
     let id = UUID()
     var firstName: String
     var lastName: String
-    
+
     //  'lhs' = left-hand side value
     // 'rhs' = right-hand side value
-    
+
     // This overloads the '<' comparison operator for the `User` type,
     // telling Swift how two User objects should be ordered when sorting.
     static func<(lhs: User, rhs: User) -> Bool {
@@ -28,7 +28,7 @@ struct AddingConformanceToComparableForCustomTypesView: View {
         User(firstName: "Kristine", lastName: "Kochanski"),
         User(firstName: "David", lastName: "Lister"),
     ].sorted()
-    
+
     var body: some View {
         List(users) {
             Text("\($0.lastName), \($0.firstName)")

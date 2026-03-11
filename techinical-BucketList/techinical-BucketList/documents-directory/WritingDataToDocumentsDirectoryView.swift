@@ -9,9 +9,7 @@ import SwiftUI
 
 struct WritingDataToDocumentsDirectoryView: View {
     var body: some View {
-        
-        VStack (spacing: 20) {
-            
+        VStack(spacing: 20) {
             Button("Read and Write") {
                 let data = Data("Test Message".utf8)
                 let url = URL.documentsDirectory.appending(path: "message.txt")

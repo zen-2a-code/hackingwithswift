@@ -9,9 +9,9 @@ import SwiftUI
 
 enum LoadingState {
     case loading, success, failed
-    
+
     static func random() -> Self {
-        switch Int.random(in: 0..<3) {
+        switch Int.random(in: 0 ..< 3) {
         case 0: return .loading
         case 1: return .success
         case 2: return .failed
