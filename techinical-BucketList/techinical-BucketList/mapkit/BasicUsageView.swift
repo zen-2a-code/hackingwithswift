@@ -13,7 +13,7 @@ struct BasicUsageView: View {
         Map()
             .mapStyle(.standard)
 //            .mapStyle(.imagery)
-//            .mapStyle(.hybrid)
+            .mapStyle(.hybrid)
 //            .mapStyle(.hybrid(elevation: .realistic))
 //            .mapStyle(.hybrid(elevation: .realistic,showsTraffic: true))
         
