@@ -10,12 +10,16 @@ import LocalAuthentication
 import Foundation
 
 extension ContentView {
+    
     @Observable
     class ViewModel {
         private(set) var locations: [Location]
         var selectedLocation: Location?
         private let savedPath = URL.documentsDirectory.appending(path: "SavedPlaces")
-        var isUnlocked = true
+        var isUnlocked = false
+        var shouldShowAlert = false
+        var alertTitle: String = ""
+        var alertMessage: String = ""
         
         init() {
             do {
@@ -62,12 +66,17 @@ extension ContentView {
                     if success {
                         self.isUnlocked = true
                     } else {
-                        // error
+                        self.shouldShowAlert = true
+                        self.alertTitle = "Biometry failed."
+                        self.alertMessage = "Try again?"
                     }
                 }
                 
             } else {
                 // no biometric
+                self.shouldShowAlert = true
+                self.alertTitle = "Biometry unavailable."
+                self.alertMessage = "Enable it in Settings > Privacy > Face ID or Touch ID."
             }
         }
     }
