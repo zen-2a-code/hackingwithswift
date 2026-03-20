@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9E22776C2F3E639F00111C21 /* Bookworm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookworm.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E22776C2F3E639F00111C21 /* Accessibility-Bookworm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Accessibility-Bookworm.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9E22776E2F3E639F00111C21 /* Bookworm */ = {
+		9E22776E2F3E639F00111C21 /* Accessibility-Bookworm */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Bookworm;
+			path = "Accessibility-Bookworm";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		9E2277632F3E639F00111C21 = {
 			isa = PBXGroup;
 			children = (
-				9E22776E2F3E639F00111C21 /* Bookworm */,
+				9E22776E2F3E639F00111C21 /* Accessibility-Bookworm */,
 				9E22776D2F3E639F00111C21 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		9E22776D2F3E639F00111C21 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E22776C2F3E639F00111C21 /* Bookworm.app */,
+				9E22776C2F3E639F00111C21 /* Accessibility-Bookworm.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9E22776B2F3E639F00111C21 /* Bookworm */ = {
+		9E22776B2F3E639F00111C21 /* Accessibility-Bookworm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9E2277772F3E63A100111C21 /* Build configuration list for PBXNativeTarget "Bookworm" */;
+			buildConfigurationList = 9E2277772F3E63A100111C21 /* Build configuration list for PBXNativeTarget "Accessibility-Bookworm" */;
 			buildPhases = (
 				9E2277682F3E639F00111C21 /* Sources */,
 				9E2277692F3E639F00111C21 /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9E22776E2F3E639F00111C21 /* Bookworm */,
+				9E22776E2F3E639F00111C21 /* Accessibility-Bookworm */,
 			);
-			name = Bookworm;
+			name = "Accessibility-Bookworm";
 			packageProductDependencies = (
 			);
 			productName = Bookworm;
-			productReference = 9E22776C2F3E639F00111C21 /* Bookworm.app */;
+			productReference = 9E22776C2F3E639F00111C21 /* Accessibility-Bookworm.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9E2277672F3E639F00111C21 /* Build configuration list for PBXProject "Bookworm" */;
+			buildConfigurationList = 9E2277672F3E639F00111C21 /* Build configuration list for PBXProject "Accessibility-Bookworm" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9E22776B2F3E639F00111C21 /* Bookworm */,
+				9E22776B2F3E639F00111C21 /* Accessibility-Bookworm */,
 			);
 		};
 /* End PBXProject section */
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9E2277672F3E639F00111C21 /* Build configuration list for PBXProject "Bookworm" */ = {
+		9E2277672F3E639F00111C21 /* Build configuration list for PBXProject "Accessibility-Bookworm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E2277752F3E63A100111C21 /* Debug */,
@@ -322,7 +322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9E2277772F3E63A100111C21 /* Build configuration list for PBXNativeTarget "Bookworm" */ = {
+		9E2277772F3E63A100111C21 /* Build configuration list for PBXNativeTarget "Accessibility-Bookworm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E2277782F3E63A100111C21 /* Debug */,

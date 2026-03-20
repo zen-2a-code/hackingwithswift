@@ -32,9 +32,31 @@ struct StarsRatingView: View {
                 } label: {
                     startImage(for: ratingNumber)
                         .foregroundStyle(ratingNumber > selectedRating ? offColor : onColor)
+                    // this accessibility settings are not bad, but they don't implement the native Voice over gestures
+//                        .accessibilityLabel(ratingNumber == 1 ? "1 star" : "\(ratingNumber) stars")
+//                        .accessibilityAddTraits(ratingNumber > selectedRating ? [] : [.isSelected])
                 }
                 .buttonStyle(.plain)
             }
+        }
+        .accessibilityElement()
+        .accessibilityLabel(label)
+        .accessibilityValue(selectedRating == 1 ? "1 star" : "\(selectedRating) stars")
+        .accessibilityAdjustableAction {swipeDirection in
+            switch swipeDirection {
+                
+            case .increment:
+                if selectedRating < maximumRating {
+                    selectedRating += 1
+                }
+            case .decrement:
+                if selectedRating > 1 {
+                    selectedRating -= 1
+                }
+            @unknown default:
+                print("New option?")
+            }
+            
         }
     }
     

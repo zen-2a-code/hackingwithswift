@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9E8121D02F35D0B70014AF1F /* Accessibility-CupcakeCorner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Accessibility-CupcakeCorner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E0D36EB2F6D9E250076CDC9 /* What Was Your Name Again? - Documents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "What Was Your Name Again? - Documents.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9E8121D22F35D0B70014AF1F /* CupcakeCorner */ = {
+		9E0D36ED2F6D9E250076CDC9 /* What Was Your Name Again? - Documents */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CupcakeCorner;
+			path = "What Was Your Name Again? - Documents";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9E8121CD2F35D0B70014AF1F /* Frameworks */ = {
+		9E0D36E82F6D9E250076CDC9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9E8121C72F35D0B70014AF1F = {
+		9E0D36E22F6D9E250076CDC9 = {
 			isa = PBXGroup;
 			children = (
-				9E8121D22F35D0B70014AF1F /* CupcakeCorner */,
-				9E8121D12F35D0B70014AF1F /* Products */,
+				9E0D36ED2F6D9E250076CDC9 /* What Was Your Name Again? - Documents */,
+				9E0D36EC2F6D9E250076CDC9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9E8121D12F35D0B70014AF1F /* Products */ = {
+		9E0D36EC2F6D9E250076CDC9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E8121D02F35D0B70014AF1F /* Accessibility-CupcakeCorner.app */,
+				9E0D36EB2F6D9E250076CDC9 /* What Was Your Name Again? - Documents.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9E8121CF2F35D0B70014AF1F /* Accessibility-CupcakeCorner */ = {
+		9E0D36EA2F6D9E250076CDC9 /* What Was Your Name Again? - Documents */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9E8121DB2F35D0B80014AF1F /* Build configuration list for PBXNativeTarget "Accessibility-CupcakeCorner" */;
+			buildConfigurationList = 9E0D36F62F6D9E270076CDC9 /* Build configuration list for PBXNativeTarget "What Was Your Name Again? - Documents" */;
 			buildPhases = (
-				9E8121CC2F35D0B70014AF1F /* Sources */,
-				9E8121CD2F35D0B70014AF1F /* Frameworks */,
-				9E8121CE2F35D0B70014AF1F /* Resources */,
+				9E0D36E72F6D9E250076CDC9 /* Sources */,
+				9E0D36E82F6D9E250076CDC9 /* Frameworks */,
+				9E0D36E92F6D9E250076CDC9 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9E8121D22F35D0B70014AF1F /* CupcakeCorner */,
+				9E0D36ED2F6D9E250076CDC9 /* What Was Your Name Again? - Documents */,
 			);
-			name = "Accessibility-CupcakeCorner";
+			name = "What Was Your Name Again? - Documents";
 			packageProductDependencies = (
 			);
-			productName = CupcakeCorner;
-			productReference = 9E8121D02F35D0B70014AF1F /* Accessibility-CupcakeCorner.app */;
+			productName = "What Was Your Name Again? - Documents";
+			productReference = 9E0D36EB2F6D9E250076CDC9 /* What Was Your Name Again? - Documents.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9E8121C82F35D0B70014AF1F /* Project object */ = {
+		9E0D36E32F6D9E250076CDC9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
 				LastUpgradeCheck = 2620;
 				TargetAttributes = {
-					9E8121CF2F35D0B70014AF1F = {
+					9E0D36EA2F6D9E250076CDC9 = {
 						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
-			buildConfigurationList = 9E8121CB2F35D0B70014AF1F /* Build configuration list for PBXProject "Accessibility-CupcakeCorner" */;
+			buildConfigurationList = 9E0D36E62F6D9E250076CDC9 /* Build configuration list for PBXProject "What Was Your Name Again? - Documents" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 9E8121C72F35D0B70014AF1F;
+			mainGroup = 9E0D36E22F6D9E250076CDC9;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 9E8121D12F35D0B70014AF1F /* Products */;
+			productRefGroup = 9E0D36EC2F6D9E250076CDC9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9E8121CF2F35D0B70014AF1F /* Accessibility-CupcakeCorner */,
+				9E0D36EA2F6D9E250076CDC9 /* What Was Your Name Again? - Documents */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9E8121CE2F35D0B70014AF1F /* Resources */ = {
+		9E0D36E92F6D9E250076CDC9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9E8121CC2F35D0B70014AF1F /* Sources */ = {
+		9E0D36E72F6D9E250076CDC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		9E8121D92F35D0B80014AF1F /* Debug */ = {
+		9E0D36F42F6D9E270076CDC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -189,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		9E8121DA2F35D0B80014AF1F /* Release */ = {
+		9E0D36F52F6D9E270076CDC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -246,7 +246,7 @@
 			};
 			name = Release;
 		};
-		9E8121DC2F35D0B80014AF1F /* Debug */ = {
+		9E0D36F72F6D9E270076CDC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -266,19 +266,19 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stovensssa.CupcakeCorner;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stovensssa.What-Was-Your-Name-Again----Documents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		9E8121DD2F35D0B80014AF1F /* Release */ = {
+		9E0D36F82F6D9E270076CDC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -298,14 +298,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.stovensssa.CupcakeCorner;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.stovensssa.What-Was-Your-Name-Again----Documents";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 6.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -313,25 +313,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9E8121CB2F35D0B70014AF1F /* Build configuration list for PBXProject "Accessibility-CupcakeCorner" */ = {
+		9E0D36E62F6D9E250076CDC9 /* Build configuration list for PBXProject "What Was Your Name Again? - Documents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9E8121D92F35D0B80014AF1F /* Debug */,
-				9E8121DA2F35D0B80014AF1F /* Release */,
+				9E0D36F42F6D9E270076CDC9 /* Debug */,
+				9E0D36F52F6D9E270076CDC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9E8121DB2F35D0B80014AF1F /* Build configuration list for PBXNativeTarget "Accessibility-CupcakeCorner" */ = {
+		9E0D36F62F6D9E270076CDC9 /* Build configuration list for PBXNativeTarget "What Was Your Name Again? - Documents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9E8121DC2F35D0B80014AF1F /* Debug */,
-				9E8121DD2F35D0B80014AF1F /* Release */,
+				9E0D36F72F6D9E270076CDC9 /* Debug */,
+				9E0D36F82F6D9E270076CDC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 9E8121C82F35D0B70014AF1F /* Project object */;
+	rootObject = 9E0D36E32F6D9E250076CDC9 /* Project object */;
 }
