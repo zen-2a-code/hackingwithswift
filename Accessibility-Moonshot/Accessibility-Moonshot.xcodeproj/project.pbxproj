@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9ED163532F20F93400F5E6DD /* Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9ED163532F20F93400F5E6DD /* Accessibility-Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Accessibility-Moonshot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		9ED163542F20F93400F5E6DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9ED163532F20F93400F5E6DD /* Moonshot.app */,
+				9ED163532F20F93400F5E6DD /* Accessibility-Moonshot.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9ED163522F20F93400F5E6DD /* Moonshot */ = {
+		9ED163522F20F93400F5E6DD /* Accessibility-Moonshot */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9ED1635E2F20F93600F5E6DD /* Build configuration list for PBXNativeTarget "Moonshot" */;
+			buildConfigurationList = 9ED1635E2F20F93600F5E6DD /* Build configuration list for PBXNativeTarget "Accessibility-Moonshot" */;
 			buildPhases = (
 				9ED1634F2F20F93400F5E6DD /* Sources */,
 				9ED163502F20F93400F5E6DD /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				9ED163552F20F93400F5E6DD /* Moonshot */,
 			);
-			name = Moonshot;
+			name = "Accessibility-Moonshot";
 			packageProductDependencies = (
 			);
 			productName = Moonshot;
-			productReference = 9ED163532F20F93400F5E6DD /* Moonshot.app */;
+			productReference = 9ED163532F20F93400F5E6DD /* Accessibility-Moonshot.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9ED1634E2F20F93400F5E6DD /* Build configuration list for PBXProject "Moonshot" */;
+			buildConfigurationList = 9ED1634E2F20F93400F5E6DD /* Build configuration list for PBXProject "Accessibility-Moonshot" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9ED163522F20F93400F5E6DD /* Moonshot */,
+				9ED163522F20F93400F5E6DD /* Accessibility-Moonshot */,
 			);
 		};
 /* End PBXProject section */
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9ED1634E2F20F93400F5E6DD /* Build configuration list for PBXProject "Moonshot" */ = {
+		9ED1634E2F20F93400F5E6DD /* Build configuration list for PBXProject "Accessibility-Moonshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9ED1635C2F20F93600F5E6DD /* Debug */,
@@ -322,7 +322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9ED1635E2F20F93600F5E6DD /* Build configuration list for PBXNativeTarget "Moonshot" */ = {
+		9ED1635E2F20F93600F5E6DD /* Build configuration list for PBXNativeTarget "Accessibility-Moonshot" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9ED1635F2F20F93600F5E6DD /* Debug */,

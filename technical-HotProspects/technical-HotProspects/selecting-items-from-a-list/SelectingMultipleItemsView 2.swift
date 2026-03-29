@@ -7,19 +7,21 @@
 
 import SwiftUI
 
-struct SelectingSingleFileView: View {
+struct SelectingMultipleItemsView: View {
     let users = ["Stoyan", "Siyana", "Pizza", "Miroslav", "Boryo", "Deya"]
-    @State private var selectedItem: String?
+    @State private var selectedItems = Set<String>()
     var body: some View {
-        List(users, id: \.self, selection: $selectedItem) {user in
+        List(users, id: \.self, selection: $selectedItems) {user in
             Text(user)
         }
-        if let selectedItem {
-            Text("Current selected user: \(selectedItem)")
+        
+        EditButton()
+        if !selectedItems.isEmpty {
+            Text("Current selected user: \(selectedItems.formatted())")
         }
     }
 }
 
 #Preview {
-    SelectingSingleFileView()
+    SelectingMultipleItemsView()
 }

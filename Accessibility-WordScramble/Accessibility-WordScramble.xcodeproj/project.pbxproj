@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9E6B02C12F105A1D00BABE52 /* WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordScramble.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E6B02C12F105A1D00BABE52 /* Accessibility-WordScramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Accessibility-WordScramble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		9E6B02C32F105A1D00BABE52 /* WordScramble */ = {
+		9E6B02C32F105A1D00BABE52 /* Accessibility-WordScramble */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = WordScramble;
+			path = "Accessibility-WordScramble";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -32,7 +32,7 @@
 		9E6B02B82F105A1D00BABE52 = {
 			isa = PBXGroup;
 			children = (
-				9E6B02C32F105A1D00BABE52 /* WordScramble */,
+				9E6B02C32F105A1D00BABE52 /* Accessibility-WordScramble */,
 				9E6B02C22F105A1D00BABE52 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -40,7 +40,7 @@
 		9E6B02C22F105A1D00BABE52 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9E6B02C12F105A1D00BABE52 /* WordScramble.app */,
+				9E6B02C12F105A1D00BABE52 /* Accessibility-WordScramble.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9E6B02C02F105A1D00BABE52 /* WordScramble */ = {
+		9E6B02C02F105A1D00BABE52 /* Accessibility-WordScramble */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9E6B02CC2F105A1E00BABE52 /* Build configuration list for PBXNativeTarget "WordScramble" */;
+			buildConfigurationList = 9E6B02CC2F105A1E00BABE52 /* Build configuration list for PBXNativeTarget "Accessibility-WordScramble" */;
 			buildPhases = (
 				9E6B02BD2F105A1D00BABE52 /* Sources */,
 				9E6B02BE2F105A1D00BABE52 /* Frameworks */,
@@ -61,13 +61,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				9E6B02C32F105A1D00BABE52 /* WordScramble */,
+				9E6B02C32F105A1D00BABE52 /* Accessibility-WordScramble */,
 			);
-			name = WordScramble;
+			name = "Accessibility-WordScramble";
 			packageProductDependencies = (
 			);
 			productName = WordScramble;
-			productReference = 9E6B02C12F105A1D00BABE52 /* WordScramble.app */;
+			productReference = 9E6B02C12F105A1D00BABE52 /* Accessibility-WordScramble.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9E6B02BC2F105A1D00BABE52 /* Build configuration list for PBXProject "WordScramble" */;
+			buildConfigurationList = 9E6B02BC2F105A1D00BABE52 /* Build configuration list for PBXProject "Accessibility-WordScramble" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9E6B02C02F105A1D00BABE52 /* WordScramble */,
+				9E6B02C02F105A1D00BABE52 /* Accessibility-WordScramble */,
 			);
 		};
 /* End PBXProject section */
@@ -325,7 +325,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9E6B02BC2F105A1D00BABE52 /* Build configuration list for PBXProject "WordScramble" */ = {
+		9E6B02BC2F105A1D00BABE52 /* Build configuration list for PBXProject "Accessibility-WordScramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E6B02CA2F105A1E00BABE52 /* Debug */,
@@ -334,7 +334,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9E6B02CC2F105A1E00BABE52 /* Build configuration list for PBXNativeTarget "WordScramble" */ = {
+		9E6B02CC2F105A1E00BABE52 /* Build configuration list for PBXNativeTarget "Accessibility-WordScramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9E6B02CD2F105A1E00BABE52 /* Debug */,

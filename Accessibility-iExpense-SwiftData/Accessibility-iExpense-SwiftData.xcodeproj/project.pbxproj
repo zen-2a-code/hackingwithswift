@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		9EB5DC572F1D304D00678A2C /* iExpense-SwiftData-SwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iExpense-SwiftData-SwiftData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9EB5DC572F1D304D00678A2C /* Accessibility-iExpense-SwiftData-SwiftData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Accessibility-iExpense-SwiftData-SwiftData.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		9EB5DC582F1D304D00678A2C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9EB5DC572F1D304D00678A2C /* iExpense-SwiftData-SwiftData.app */,
+				9EB5DC572F1D304D00678A2C /* Accessibility-iExpense-SwiftData-SwiftData.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9EB5DC562F1D304D00678A2C /* iExpense-SwiftData-SwiftData */ = {
+		9EB5DC562F1D304D00678A2C /* Accessibility-iExpense-SwiftData-SwiftData */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9EB5DC622F1D304F00678A2C /* Build configuration list for PBXNativeTarget "iExpense-SwiftData-SwiftData" */;
+			buildConfigurationList = 9EB5DC622F1D304F00678A2C /* Build configuration list for PBXNativeTarget "Accessibility-iExpense-SwiftData-SwiftData" */;
 			buildPhases = (
 				9EB5DC532F1D304D00678A2C /* Sources */,
 				9EB5DC542F1D304D00678A2C /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				9EB5DC592F1D304D00678A2C /* iExpense */,
 			);
-			name = "iExpense-SwiftData-SwiftData";
+			name = "Accessibility-iExpense-SwiftData-SwiftData";
 			packageProductDependencies = (
 			);
 			productName = iExpense;
-			productReference = 9EB5DC572F1D304D00678A2C /* iExpense-SwiftData-SwiftData.app */;
+			productReference = 9EB5DC572F1D304D00678A2C /* Accessibility-iExpense-SwiftData-SwiftData.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9EB5DC522F1D304D00678A2C /* Build configuration list for PBXProject "iExpense-SwiftData" */;
+			buildConfigurationList = 9EB5DC522F1D304D00678A2C /* Build configuration list for PBXProject "Accessibility-iExpense-SwiftData" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9EB5DC562F1D304D00678A2C /* iExpense-SwiftData-SwiftData */,
+				9EB5DC562F1D304D00678A2C /* Accessibility-iExpense-SwiftData-SwiftData */,
 			);
 		};
 /* End PBXProject section */
@@ -313,7 +313,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9EB5DC522F1D304D00678A2C /* Build configuration list for PBXProject "iExpense-SwiftData" */ = {
+		9EB5DC522F1D304D00678A2C /* Build configuration list for PBXProject "Accessibility-iExpense-SwiftData" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9EB5DC602F1D304F00678A2C /* Debug */,
@@ -322,7 +322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9EB5DC622F1D304F00678A2C /* Build configuration list for PBXNativeTarget "iExpense-SwiftData-SwiftData" */ = {
+		9EB5DC622F1D304F00678A2C /* Build configuration list for PBXNativeTarget "Accessibility-iExpense-SwiftData-SwiftData" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9EB5DC632F1D304F00678A2C /* Debug */,

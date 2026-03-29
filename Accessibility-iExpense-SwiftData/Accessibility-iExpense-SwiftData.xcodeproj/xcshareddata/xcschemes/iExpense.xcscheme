@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9EB5DC562F1D304D00678A2C"
-               BuildableName = "iExpense-SwiftData-SwiftData.app"
-               BlueprintName = "iExpense-SwiftData-SwiftData"
-               ReferencedContainer = "container:iExpense-SwiftData.xcodeproj">
+               BuildableName = "Accessibility-iExpense-SwiftData-SwiftData.app"
+               BlueprintName = "Accessibility-iExpense-SwiftData-SwiftData"
+               ReferencedContainer = "container:Accessibility-iExpense-SwiftData.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9EB5DC562F1D304D00678A2C"
-            BuildableName = "iExpense-SwiftData-SwiftData.app"
-            BlueprintName = "iExpense-SwiftData-SwiftData"
-            ReferencedContainer = "container:iExpense-SwiftData.xcodeproj">
+            BuildableName = "Accessibility-iExpense-SwiftData-SwiftData.app"
+            BlueprintName = "Accessibility-iExpense-SwiftData-SwiftData"
+            ReferencedContainer = "container:Accessibility-iExpense-SwiftData.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9EB5DC562F1D304D00678A2C"
-            BuildableName = "iExpense-SwiftData-SwiftData.app"
-            BlueprintName = "iExpense-SwiftData-SwiftData"
-            ReferencedContainer = "container:iExpense-SwiftData.xcodeproj">
+            BuildableName = "Accessibility-iExpense-SwiftData-SwiftData.app"
+            BlueprintName = "Accessibility-iExpense-SwiftData-SwiftData"
+            ReferencedContainer = "container:Accessibility-iExpense-SwiftData.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

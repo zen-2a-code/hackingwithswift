@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelectingSingleFileView: View {
+struct SelectingSingleItemView: View {
     let users = ["Stoyan", "Siyana", "Pizza", "Miroslav", "Boryo", "Deya"]
     @State private var selectedItem: String?
     var body: some View {
@@ -17,9 +17,10 @@ struct SelectingSingleFileView: View {
         if let selectedItem {
             Text("Current selected user: \(selectedItem)")
         }
+        
     }
 }
 
 #Preview {
-    SelectingSingleFileView()
+    SelectingSingleItemView()
 }

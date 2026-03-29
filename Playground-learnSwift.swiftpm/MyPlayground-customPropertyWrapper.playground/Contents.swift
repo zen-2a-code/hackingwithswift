@@ -22,7 +22,17 @@ struct NonNegative<Value: BinaryInteger> {
     }
 }
 
+struct User {
+    var name: String
+    @NonNegative var score: Int
+}
 
+var stoyan = User(name: "Stoyan", score: -200)
+print(stoyan.score)
+stoyan.score = 42
+print(stoyan.score)
+stoyan.score = -3_000_000
+print(stoyan.score)
 
 
 var greeting = "Hello, playground"

@@ -7,21 +7,29 @@
 
 import SwiftUI
 
-struct SimpleTabView: View {
+struct ControledProgrammaticallyTabView: View {
+    @State private var selectedTab = "one"
     var body: some View {
-        TabView{
-            Text("Tab one")
-                .tabItem {
-                    Label("One", systemImage: "star")
+        TabView(selection: $selectedTab) {
+            VStack(spacing: 10) {
+                Text("Tab One")
+                Button("Go to Tab two") {
+                    selectedTab = "two"
                 }
-            Text("Tab two")
+            }
+            .tabItem {
+                Label("One", systemImage: "star")
+            }
+            .tag("one")
+            Text("Tab Two")
                 .tabItem {
                     Label("Two", systemImage: "circle")
                 }
+                .tag("two")
         }
     }
 }
 
 #Preview {
-    SimpleTabView()
+    ControledProgrammaticallyTabView()
 }

@@ -8,14 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var viewModel = ViewModel()
+    @State private var showAddPersonSheet = false
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Group {
+                if viewModel.people.isEmpty {
+                    ContentUnavailableView("List empty\nAdd person", systemImage: "person.crop.circle.badge.plus")
+                        .onTapGesture {
+                            showAddPersonSheet = true
+                        }
+                } else {
+                    List(viewModel.people.sorted()) {person in
+                        PersonRowView(person: person)
+                    }
+                }
+            }
+            .navigationTitle("What was your name again?")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $showAddPersonSheet) {
+                NavigationStack {
+                    AddPersonView(onSave: viewModel.addPerson)
+                }
+            }
+            .toolbar {
+                Button("Add", systemImage: "plus"){
+                    showAddPersonSheet = true
+                }
+            }
         }
-        .padding()
     }
 }
 

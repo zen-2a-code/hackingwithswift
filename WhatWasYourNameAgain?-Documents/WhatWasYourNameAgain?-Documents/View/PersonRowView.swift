@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct PersonRowView: View {
+    var person: Person
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink {
+            PersonDetailsView(person: person)
+        } label: {
+            HStack{
+                Image(uiImage: UIImage(data: person.imageData) ?? UIImage())
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 80, height: 80)
+                    .clipShape(.circle)
+                    .shadow(radius: 2)
+                Spacer()
+                Text(person.name)
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
     }
 }
 
 #Preview {
-    PersonRowView()
+    NavigationStack {
+        List {
+            PersonRowView(person: Person.example)
+                .navigationTitle("What was your name again?")
+                .navigationBarTitleDisplayMode(.inline)
+        }
+    }
 }

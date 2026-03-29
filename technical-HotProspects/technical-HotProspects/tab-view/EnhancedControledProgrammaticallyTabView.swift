@@ -7,29 +7,33 @@
 
 import SwiftUI
 
-struct ControledProgrammaticallyTabView: View {
-    @State private var selectedTab = "one"
+struct EnhancedControledProgrammaticallyTabView: View {
+    @State private var selectedTab = ScreenTab.tabOne
     var body: some View {
         TabView(selection: $selectedTab) {
             VStack(spacing: 10) {
                 Text("Tab One")
                 Button("Go to Tab two") {
-                    selectedTab = "two"
+                    selectedTab = .tabTwo
                 }
             }
             .tabItem {
                 Label("One", systemImage: "star")
             }
-            .tag("one")
+            .tag(ScreenTab.tabOne)
             Text("Tab Two")
                 .tabItem {
                     Label("Two", systemImage: "circle")
                 }
-                .tag("two")
+                .tag(ScreenTab.tabTwo)
         }
+    }
+    
+    enum ScreenTab {
+        case tabOne, tabTwo
     }
 }
 
 #Preview {
-    ControledProgrammaticallyTabView()
+    EnhancedControledProgrammaticallyTabView()
 }

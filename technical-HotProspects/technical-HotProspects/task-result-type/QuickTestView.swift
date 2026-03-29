@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct QuickTestView: View {
+    let result: Result<String, Error>?
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        switch result {
+        case .success(let success):
+            Text("Success: \(success)")
+        case .failure(let failure):
+            Text("There was an error \(failure.localizedDescription)")
+        case nil:
+            Text("Oh, something went wrong, no fetch at all")
+        }
     }
 }
 
 #Preview {
-    QuickTestView()
+    QuickTestView(result: Result<String, any Error>?(nilLiteral: ()))
 }

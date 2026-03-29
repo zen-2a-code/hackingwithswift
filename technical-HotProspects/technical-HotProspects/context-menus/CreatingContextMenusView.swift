@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct CreatingContextMenusView: View {
+    @State private var backgroundColor: Color = .red
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 20) {
+            Text("Hello world")
+                .padding()
+                .background(backgroundColor)
+            
+            Text("Change color context menu")
+                .contextMenu {
+                    Button("Red", systemImage: "car") {
+                        backgroundColor = .red
+                    }
+                    
+                    Button("Blue", systemImage: "house") {
+                        backgroundColor = .blue
+                    }
+                    
+                    Button("Green", systemImage: "cat") {
+                        backgroundColor = .green
+                    }
+                }
+        }
     }
 }
 

@@ -9,7 +9,16 @@ import SwiftUI
 
 struct SimpleTabView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView{
+            Text("Tab one")
+                .tabItem {
+                    Label("One", systemImage: "star")
+                }
+            Text("Tab two")
+                .tabItem {
+                    Label("Two", systemImage: "circle")
+                }
+        }
     }
 }
 

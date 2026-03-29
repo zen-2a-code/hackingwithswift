@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-struct UnderstandingSwiftResultTypeView: View {
-    @State private var output = ""
+struct EnhanceUnderstandingSwiftResultTypeView: View {
+    @State private var result: Result<String, Error>?
     
     var body: some View {
-        Text(output)
-            .task {
-                await fetchReadings()
-            }
+        VStack {
+            QuickTestView(result: result)
+        }
+        .task  {
+            await fetchReadings()
+        }
     }
     
     func fetchReadings() async {
@@ -26,22 +28,10 @@ struct UnderstandingSwiftResultTypeView: View {
         }
         
         let result = await fetchTask.result
-        
-//        do {
-//            output = try result.get()
-//        } catch {
-//            output = "Error: \(error.localizedDescription)"
-//        }
-        
-        switch result {
-            case .success(let str):
-                output = str
-            case .failure(let error):
-                output = "Error: \(error.localizedDescription)"
-        }
+        self.result = result
     }
 }
 
 #Preview {
-    UnderstandingSwiftResultTypeView()
+    EnhanceUnderstandingSwiftResultTypeView()
 }
