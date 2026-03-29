@@ -13,6 +13,7 @@ import SwiftUI
 
 struct ProspectsView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.editMode) private var editMode
     @Query(sort: \Prospect.name) private var prospects: [Prospect]
     @State private var isShowingScanner = false
     @State private var selectedProspectIDs = Set<PersistentIdentifier>()
@@ -116,7 +117,7 @@ struct ProspectsView: View {
                 
             }
             .safeAreaInset(edge: .bottom) {
-                    if !selectedProspectIDs.isEmpty {
+                if editMode?.wrappedValue.isEditing == true && !selectedProspectIDs.isEmpty {
                         Button(role: .destructive, action: deleteSelectedProspects) {
                             Text("Delete Selected")
                                 .frame(maxWidth: .infinity)
