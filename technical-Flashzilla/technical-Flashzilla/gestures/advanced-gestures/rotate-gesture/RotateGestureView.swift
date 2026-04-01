@@ -13,7 +13,6 @@ struct RotateGestureView: View {
 
     var body: some View {
         Text("Hello, World!")
-            .rotationEffect(finalAmount + currentAmount)
             .rotationEffect(currentAmount + finalAmount)
             .gesture(
                 RotateGesture()

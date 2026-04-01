@@ -19,7 +19,9 @@ struct GestureSequencesView: View {
       var body: some View {
           // a drag gesture that updates offset and isDragging as it moves around
           let dragGesture = DragGesture()
-              .onChanged { value in offset = value.translation }
+              .onChanged { value in
+                  offset = value.translation
+              }
               .onEnded { _ in
                   withAnimation {
                       offset = .zero
@@ -27,7 +29,7 @@ struct GestureSequencesView: View {
                   }
               }
 
-          // a long press gesture that enables isDragging
+          // a long press gesture that enables isDragging, the intresting part here is hthat onEnded is executed not when released but when the LongPress duration is execeeded.
           let pressGesture = LongPressGesture()
               .onEnded { value in
                   withAnimation {
