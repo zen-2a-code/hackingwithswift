@@ -11,7 +11,7 @@ import SwiftUI
 struct technical_FlashzillaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EnhancedPointGestureSequencesView()
         }
     }
 }
