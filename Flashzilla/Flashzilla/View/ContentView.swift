@@ -1,4 +1,3 @@
-//
 //  ContentView.swift
 //  Flashzilla
 //
@@ -39,15 +38,19 @@ struct ContentView: View {
                     .background(.black.opacity(0.75))
                     .clipShape(.capsule)
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
+                    ForEach(cards, id: \.id) { card in
+                        CardView(card: card) {
                             withAnimation {
-                                removeCard(at: index)
+                                removeCard(card)
+                            }
+                        } addback: {
+                            withAnimation {
+                                addCardBackToDeck(card)
                             }
                         }
-                        .allowsHitTesting(index == cards.count - 1)
-                        .accessibilityHidden(index != cards.count - 1)
-                        .stacked(at: index, in: cards.count)
+                        .allowsHitTesting(cards.last?.id == card.id)
+                        .accessibilityHidden(cards.last?.id != cards.last?.id)
+                        .stacked(at: cards.firstIndex(of: card) ?? 0, in: cards.count)
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
@@ -88,7 +91,7 @@ struct ContentView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(cards[cards.count - 1])
                             }
                         } label: {
                             Image(systemName: "xmark.circle")
@@ -103,7 +106,7 @@ struct ContentView: View {
 
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                removeCard(cards[cards.count - 1])
                             }
                         } label: {
                             Image(systemName: "checkmark.circle")
@@ -139,9 +142,9 @@ struct ContentView: View {
         }
     }
     
-    func removeCard(at index: Int) {
+    func removeCard(_ card: Card) {
+        guard let index = cards.firstIndex(of: card) else { return }
         guard index >= 0 else { return }
-        
         cards.remove(at: index)
         
         if cards.isEmpty {
@@ -149,6 +152,12 @@ struct ContentView: View {
         }
     }
     
+    func addCardBackToDeck(_ card: Card) {
+        let newCard = Card(prompt: card.prompt, answer: card.answer)
+        cards.insert(newCard, at: 0)
+        removeCard(card)
+    }
+ 
     func loadData() {
          if let data = UserDefaults.standard.data(forKey: "Cards") {
              if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
