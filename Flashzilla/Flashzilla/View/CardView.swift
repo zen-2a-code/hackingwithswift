@@ -7,6 +7,26 @@
 
 import SwiftUI
 
+struct SlidingBackground: ViewModifier {
+    let offset: CGSize
+    @Environment(\.accessibilityDifferentiateWithoutColor) private var accessibilityDifferentiateWithoutColor
+    
+    func body(content: Content) -> some View {
+        content.background(
+            accessibilityDifferentiateWithoutColor
+                        ? nil
+            : offset.width == .zero ? nil : RoundedRectangle(cornerRadius: 25)
+                            .fill(offset.width > 0 ? .green : .red)
+        )
+    }
+}
+
+extension View {
+    func slidingBackground(offset: CGSize) -> some View {
+        modifier(SlidingBackground(offset: offset))
+    }
+}
+
 struct CardView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) private var accessibilityDifferentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) private var accessibilityVoiceOverEnabled
@@ -24,12 +44,7 @@ struct CardView: View {
                         : .white
                             .opacity(1 - Double(abs(offset.width / 50)))
                 )
-                .background (
-                    accessibilityDifferentiateWithoutColor
-                                ? nil
-                                : RoundedRectangle(cornerRadius: 25)
-                                    .fill(offset.width > 0 ? .green : .red)
-                )
+                .slidingBackground(offset: offset)
                 .shadow(radius: 10)
 
             VStack {
