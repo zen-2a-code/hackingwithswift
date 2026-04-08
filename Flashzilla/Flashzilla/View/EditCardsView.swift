@@ -43,6 +43,7 @@ struct EditCardsView: View {
        }
 
        func done() {
+           
            dismiss()
        }
 
@@ -64,6 +65,8 @@ struct EditCardsView: View {
            let trimmedPrompt = newPrompt.trimmingCharacters(in: .whitespaces)
            let trimmedAnswer = newAnswer.trimmingCharacters(in: .whitespaces)
 //           guard trimmedPrompt.isEmpty == false && trimmedAnswer.isEmpty == false else { return }
+           newPrompt = ""
+           newAnswer = ""
            guard !trimmedPrompt.isEmpty, !trimmedAnswer.isEmpty else { return }
 
            let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
