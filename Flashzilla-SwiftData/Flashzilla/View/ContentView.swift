@@ -5,6 +5,7 @@
 //
 
 import SwiftUI
+import SwiftData
 internal import Combine
 
 extension View {
@@ -18,8 +19,10 @@ struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var accessibilityVoiceOverEnabled
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: \Card.createdAt, order: .forward) private var allCards: [Card] = []
     @State private var isActive = true
-    @State private var cards = [Card]()
+    @State private var seassionCards: [Card] = []
     @State private var showingEditScreen = false
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -38,7 +41,7 @@ struct ContentView: View {
                     .background(.black.opacity(0.75))
                     .clipShape(.capsule)
                 ZStack {
-                    ForEach(cards, id: \.id) { card in
+                    ForEach(seassionCards, id: \.id) { card in
                         CardView(card: card) {
                             withAnimation {
                                 removeCard(card)
@@ -48,14 +51,14 @@ struct ContentView: View {
                                 addCardBackToDeck(card)
                             }
                         }
-                        .allowsHitTesting(cards.last?.id == card.id)
-                        .accessibilityHidden(cards.last?.id != cards.last?.id)
-                        .stacked(at: cards.firstIndex(of: card) ?? 0, in: cards.count)
+                        .allowsHitTesting(seassionCards.last?.id == card.id)
+                        .accessibilityHidden(seassionCards.last?.id != seassionCards.last?.id)
+                        .stacked(at: seassionCards.firstIndex(of: card) ?? 0, in: seassionCards.count)
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
                 
-                if cards.isEmpty || timeRemaining == 0 {
+                if seassionCards.isEmpty || timeRemaining == 0 {
                     Button("Start Again", action: resetCards)
                         .padding()
                         .background(.white)
@@ -91,7 +94,7 @@ struct ContentView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                removeCard(cards[cards.count - 1])
+                                removeCard(seassionCards[seassionCards.count - 1])
                             }
                         } label: {
                             Image(systemName: "xmark.circle")
@@ -106,7 +109,7 @@ struct ContentView: View {
 
                         Button {
                             withAnimation {
-                                removeCard(cards[cards.count - 1])
+                                removeCard(seassionCards[seassionCards.count - 1])
                             }
                         } label: {
                             Image(systemName: "checkmark.circle")
@@ -133,7 +136,7 @@ struct ContentView: View {
         }
         .onChange(of: scenePhase) {
             if scenePhase == .active {
-                if !cards.isEmpty {
+                if !seassionCards.isEmpty {
                     isActive = true
                 }
             } else {
@@ -143,32 +146,24 @@ struct ContentView: View {
     }
     
     func removeCard(_ card: Card) {
-        guard let index = cards.firstIndex(of: card) else { return }
+        guard let index = seassionCards.lastIndex(of: card) else { return }
         guard index >= 0 else { return }
-        cards.remove(at: index)
+        seassionCards.remove(at: index)
         
-        if cards.isEmpty {
+        if seassionCards.isEmpty {
             isActive = false
         }
     }
     
     func addCardBackToDeck(_ card: Card) {
         let newCard = Card(prompt: card.prompt, answer: card.answer)
-        cards.insert(newCard, at: 0)
+        seassionCards.insert(newCard, at: 0)
         removeCard(card)
     }
- 
-    func loadData() {
-         if let data = UserDefaults.standard.data(forKey: "Cards") {
-             if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                 cards = decoded
-             }
-         }
-     }
     
     func resetCards() {
         timeRemaining = 100
-        loadData()
+        seassionCards = allCards
         isActive = true
     }
 }

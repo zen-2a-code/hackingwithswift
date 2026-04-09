@@ -5,6 +5,7 @@
 //  Created by Stoyan Hristov on 4.04.26.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
@@ -12,7 +13,7 @@ struct FlashzillaApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-//            CardView(card: .example)
+                .modelContainer(for: Card.self)
         }
     }
 }
