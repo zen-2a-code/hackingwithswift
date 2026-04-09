@@ -143,7 +143,7 @@ struct ContentView: View {
     }
     
     func removeCard(_ card: Card) {
-        guard let index = cards.firstIndex(of: card) else { return }
+        guard let index = cards.lastIndex(of: card) else { return }
         guard index >= 0 else { return }
         cards.remove(at: index)
         
@@ -159,11 +159,7 @@ struct ContentView: View {
     }
  
     func loadData() {
-         if let data = UserDefaults.standard.data(forKey: "Cards") {
-             if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                 cards = decoded
-             }
-         }
+        cards = CardStore.load()
      }
     
     func resetCards() {

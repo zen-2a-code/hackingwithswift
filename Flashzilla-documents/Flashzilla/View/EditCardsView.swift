@@ -43,22 +43,15 @@ struct EditCardsView: View {
        }
 
        func done() {
-           
            dismiss()
        }
 
        func loadData() {
-           if let data = UserDefaults.standard.data(forKey: "Cards") {
-               if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                   cards = decoded
-               }
-           }
+           cards = CardStore.load()
        }
 
        func saveData() {
-           if let data = try? JSONEncoder().encode(cards) {
-               UserDefaults.standard.set(data, forKey: "Cards")
-           }
+           CardStore.save(cards)
        }
 
        func addCard() {
