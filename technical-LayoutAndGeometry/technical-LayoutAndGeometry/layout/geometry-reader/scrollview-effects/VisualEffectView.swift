@@ -9,7 +9,24 @@ import SwiftUI
 
 struct VisualEffectView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 0) {
+                ForEach(1..<20) { num in
+                    Text("Number \(num)")
+                        .font(.largeTitle)
+                        .padding()
+                        .background(.red)
+                        .frame(width: 200, height: 200)
+                        .visualEffect { content, proxy in
+                            content
+                                .rotation3DEffect(.degrees(-proxy.frame(in: .global).minX) / 8, axis: (x: 0, y: 1, z: 0))
+                        }
+
+                }
+            }
+            .scrollTargetLayout()
+        }
+        .scrollTargetBehavior(.viewAligned)
     }
 }
 
