@@ -8,11 +8,18 @@
 import SwiftUI
 
 struct DiceSidesSelectorView: View {
+    @Binding var diceCount: Int
+    @Binding var diceSidesCount: Int
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Stepper("Dice count: \(diceCount)", value: $diceCount)
+            Stepper("Dice sides: \(diceSidesCount)", value: $diceSidesCount)
+        }
     }
 }
 
 #Preview {
-    DiceSidesSelectorView()
+    @Previewable @State var diceCount = 1
+    @Previewable @State var diceSides = 6
+    DiceSidesSelectorView(diceCount: $diceCount, diceSidesCount: $diceSides)
 }

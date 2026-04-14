@@ -42,7 +42,7 @@ extension ContentView  {
                 tickCounter += 1
                 if tickCounter == 10 {
                     self.stopTimer()
-                    self.modelContext.insert(Roll(rolledNumber: self.rolls, diceSides: self.diceMaximumSize, diceCount: self.diceCount))
+                    self.modelContext.insert(Roll(rolledNumber: self.rolls, diceSides: self.diceMaximumSize, dicesCount: self.diceCount))
                 }
             }
         }
