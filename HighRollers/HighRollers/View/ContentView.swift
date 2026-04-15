@@ -72,6 +72,7 @@ struct ContentView: View {
                 Spacer()
 
                 Button {
+                    HapticManager.impact()
                     viewModel.rollDice()
                 } label: {
                     Label("Roll", systemImage: "dice.fill")
@@ -93,6 +94,10 @@ struct ContentView: View {
             .padding()
             .sheet(isPresented: $showHistorySheet) {
                 RollHistoryView()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .deviceShook)) { _ in
+                HapticManager.impact()
+                viewModel.rollDice()
             }
         }
     }
