@@ -31,7 +31,7 @@ struct RollHistoryView: View {
                     }
                     HStack {
                         Image(systemName: "numbersign")
-                        Text("x\(roll.dicesCount)")
+                        Text("x\(roll.diceCount)")
                     }
                 }
                 VStack {
@@ -60,7 +60,7 @@ struct RollHistoryView: View {
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(for: Roll.self, configurations: config)
     
-    for roll in [Roll.example, Roll(rolledNumber: [69,42,12,15,10,23,11,55,12,7,8,12,420], diceSides: 6, dicesCount: 12), Roll.example] {
+    for roll in [Roll.example, Roll(rolledNumber: [69,42,12,15,10,23,11,55,12,7,8,12,420], diceSides: 6, diceCount: 12), Roll.example] {
         container.mainContext.insert(roll)
     }
     

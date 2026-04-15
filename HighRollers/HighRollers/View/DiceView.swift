@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiceView: View {
+private struct SingleDiceView: View {
     var diceNumber: Int
     var body: some View {
         ZStack {
@@ -21,13 +21,13 @@ struct DiceView: View {
     }
 }
 
-struct DicesView: View {
-    @Binding var dices: Roll
+struct DiceView: View {
+    @Binding var dice: Roll
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(dices.rolledNumbers.indices, id: \.self) {index in
-                    DiceView(diceNumber: dices.rolledNumbers[index])
+                ForEach(dice.rolledNumbers.indices, id: \.self) {index in
+                    SingleDiceView(diceNumber: dice.rolledNumbers[index])
                 }
             }
         }
@@ -36,5 +36,5 @@ struct DicesView: View {
 }
 
 #Preview {
-    DicesView(dices: .constant(Roll.example))
+    DiceView(dice: .constant(Roll.example))
 }

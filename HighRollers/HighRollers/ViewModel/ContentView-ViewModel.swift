@@ -12,7 +12,10 @@ extension ContentView  {
     @Observable
     final class ViewModel {
         var modelContext: ModelContext
-        var diceMaximumSize: Int = 6
+        
+        let diceSidesMaximumLimit: Int = 100
+        let diceCountMaximumLimit: Int = 133
+        var diceMaximumSides: Int = 6
         var diceCount = 1 {
             didSet {
                 self.rolls = Array(repeating: 0, count: self.diceCount)
@@ -37,12 +40,12 @@ extension ContentView  {
             var tickCounter = 0
             timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { _ in
                 for index in 0..<self.diceCount {
-                    self.rolls[index] = Int.random(in: 1...self.diceMaximumSize)
+                    self.rolls[index] = Int.random(in: 1...self.diceMaximumSides)
                 }
                 tickCounter += 1
                 if tickCounter == 10 {
                     self.stopTimer()
-                    self.modelContext.insert(Roll(rolledNumber: self.rolls, diceSides: self.diceMaximumSize, dicesCount: self.diceCount))
+                    self.modelContext.insert(Roll(rolledNumber: self.rolls, diceSides: self.diceMaximumSides, diceCount: self.diceCount))
                 }
             }
         }
