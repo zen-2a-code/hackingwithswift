@@ -12,7 +12,7 @@ private struct SingleDiceView: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 20)
-                .fill(.gray)
+                .fill(.gray.opacity(0.7))
             Text(String(diceNumber))
                 .font(.system(size: 50))
                 .foregroundStyle(Color.white)
@@ -22,12 +22,12 @@ private struct SingleDiceView: View {
 }
 
 struct DiceView: View {
-    @Binding var dice: Roll
+    @Binding var dice: [Int]
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(dice.rolledNumbers.indices, id: \.self) {index in
-                    SingleDiceView(diceNumber: dice.rolledNumbers[index])
+                ForEach(dice.indices, id: \.self) {index in
+                    SingleDiceView(diceNumber: dice[index])
                 }
             }
         }
@@ -36,5 +36,5 @@ struct DiceView: View {
 }
 
 #Preview {
-    DiceView(dice: .constant(Roll.example))
+    DiceView(dice: .constant([12,13,51,42,69]))
 }

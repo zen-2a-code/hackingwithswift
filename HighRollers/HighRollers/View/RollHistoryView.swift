@@ -10,44 +10,54 @@ import SwiftUI
 
 struct RollHistoryView: View {
     @Query(sort: \Roll.createdAt, order: .forward) private var rolls: [Roll]
+    @Environment(\.dismiss) private var dismiss
     
     
     var body: some View {
-        List(rolls) { roll in
-            HStack(spacing: 20) {
-                VStack(spacing: 10) {
-                    Text("Total:")
-                        .foregroundStyle(.secondary)
-                        .font(.callout)
-                    Text("\(roll.total)")
-                        .font(.largeTitle)
-                }
-                .frame(minWidth: 80)
-                
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "dice")
-                        Text("d\(roll.diceSides)")
+        NavigationStack {
+            List(rolls) { roll in
+                HStack(spacing: 20) {
+                    VStack(spacing: 10) {
+                        Text("Total:")
+                            .foregroundStyle(.secondary)
+                            .font(.callout)
+                        Text("\(roll.total)")
+                            .font(.largeTitle)
                     }
-                    HStack {
-                        Image(systemName: "numbersign")
-                        Text("x\(roll.diceCount)")
+                    .frame(minWidth: 80)
+                    
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Image(systemName: "dice")
+                            Text("d\(roll.diceSides)")
+                        }
+                        HStack {
+                            Image(systemName: "numbersign")
+                            Text("x\(roll.diceCount)")
+                        }
                     }
+                    VStack {
+                        Text("Numbers rolled: ")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                        Text(getRolledNumbersAsString(roll))
+                            .multilineTextAlignment(.leading)
+                            .font(.title3)
+                    }
+                    .frame(maxWidth: .infinity)
+                    
                 }
-                VStack {
-                    Text("Numbers rolled: ")
-                        .font(.footnote)
-                        .foregroundStyle(.secondary)
-                    Text(getRolledNumbersAsString(roll))
-                        .multilineTextAlignment(.leading)
-                        .font(.title3)
-                }
-                .frame(maxWidth: .infinity)
-                
             }
-        }
-        .onAppear {
-            print(rolls.count)
+            .navigationTitle("History")
+            .navigationBarTitleDisplayMode(.inline)
+            .presentationDragIndicator(.visible)
+            .toolbar {
+                Button {
+                    dismiss()
+                } label: {
+                    Image(systemName: "xmark")
+                }
+            }
         }
     }
     

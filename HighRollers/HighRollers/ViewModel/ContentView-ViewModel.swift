@@ -15,14 +15,18 @@ extension ContentView  {
         
         let diceSidesMaximumLimit: Int = 100
         let diceCountMaximumLimit: Int = 133
-        var diceMaximumSides: Int = 6
+        var diceSides: Int = 6
         var diceCount = 1 {
             didSet {
                 self.rolls = Array(repeating: 0, count: self.diceCount)
             }
         }
         var rolls: [Int] = [0]
-        var timer: Timer?
+        var isRolling = false
+        private var timer: Timer?
+        var showTotal: Bool {
+            getTotalRolled() > 0 && isRolling == false
+        }
         
         init(modelContext: ModelContext) {
             self.modelContext = modelContext
@@ -36,16 +40,18 @@ extension ContentView  {
             self.rolls = Array(repeating: 0, count: self.diceCount)
         }
         
-        func rollDices() {
+        func rollDice() {
+            isRolling = true
             var tickCounter = 0
             timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true) { _ in
                 for index in 0..<self.diceCount {
-                    self.rolls[index] = Int.random(in: 1...self.diceMaximumSides)
+                    self.rolls[index] = Int.random(in: 1...self.diceSides)
                 }
                 tickCounter += 1
                 if tickCounter == 10 {
                     self.stopTimer()
-                    self.modelContext.insert(Roll(rolledNumber: self.rolls, diceSides: self.diceMaximumSides, diceCount: self.diceCount))
+                    self.isRolling = false
+                    self.modelContext.insert(Roll(rolledNumber: self.rolls, diceSides: self.diceSides, diceCount: self.diceCount))
                 }
             }
         }

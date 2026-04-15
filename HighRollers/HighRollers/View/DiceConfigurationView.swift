@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DiceSidesSelectorView: View {
+struct DiceConfigurationView: View {
     @Binding var diceCount: Int
     @Binding var diceSidesCount: Int
     let dicesSidesMaximumLimit: Int
@@ -15,9 +15,11 @@ struct DiceSidesSelectorView: View {
     var body: some View {
         VStack {
             Stepper("Dice count: \(diceCount)", value: $diceCount, in: 1...diceCountMaximumLimit)
-            Stepper("Dice sides: \(diceSidesCount)", value: $diceSidesCount, in: 1...diceCountMaximumLimit)
+            Stepper("Dice sides: \(diceSidesCount)", value: $diceSidesCount, in: 1...dicesSidesMaximumLimit)
         }
-        .frame(width: 230, height: 90)
+        .font(.title3)
+        .foregroundStyle(.white)
+        .frame(width: 280, height: 90)
         .animation(.easeInOut, value: diceCount)
         .animation(.bouncy, value: diceSidesCount)
     }
@@ -30,6 +32,11 @@ struct DiceSidesSelectorView: View {
     let dicesSidesMaximumLimit: Int = 100
     let diceCountMaximumLimit: Int = 133
     
-    DiceSidesSelectorView(diceCount: $diceCount, diceSidesCount: $diceSides, dicesSidesMaximumLimit: dicesSidesMaximumLimit, diceCountMaximumLimit:  diceCountMaximumLimit)
-        .frame(height: 80)
+    ZStack {
+        LinearGradient(gradient: Gradient(colors: [Color.white, Color.purple, .pink]), startPoint: .top, endPoint: .bottomTrailing)
+            .ignoresSafeArea()
+        
+        DiceConfigurationView(diceCount: $diceCount, diceSidesCount: $diceSides, dicesSidesMaximumLimit: dicesSidesMaximumLimit, diceCountMaximumLimit:  diceCountMaximumLimit)
+            .frame(height: 80)
+    }
 }
