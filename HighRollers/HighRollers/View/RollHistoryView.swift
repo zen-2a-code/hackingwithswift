@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct RollHistoryView: View {
-    @Query(sort: \Roll.createdAt, order: .forward) private var rolls: [Roll]
+    @Query(sort: \Roll.createdAt, order: .reverse) private var rolls: [Roll]
     @Environment(\.dismiss) private var dismiss
     
     

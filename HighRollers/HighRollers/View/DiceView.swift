@@ -24,11 +24,14 @@ private struct SingleDiceView: View {
 struct DiceView: View {
     @Binding var dice: [Int]
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(dice.indices, id: \.self) {index in
-                    SingleDiceView(diceNumber: dice[index])
+        GeometryReader { proxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    ForEach(dice.indices, id: \.self) {index in
+                        SingleDiceView(diceNumber: dice[index])
+                    }
                 }
+                .frame(minWidth: proxy.size.width)
             }
         }
         .frame(height: 100)
