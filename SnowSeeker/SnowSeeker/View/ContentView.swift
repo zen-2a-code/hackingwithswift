@@ -7,10 +7,15 @@
 
 import SwiftUI
 
+enum SortType {
+    case regular, alphabetical, country
+}
+
 struct ContentView: View {
     let resorts: [Resort] = Bundle.main.decode("resorts.json")
     @State var searchFilter = ""
     @State private var favorites = Favorites()
+    @State private var sortOrder = SortType.regular
 
     var filteredResorts: [Resort] {
         if searchFilter.isEmpty {
@@ -22,9 +27,23 @@ struct ContentView: View {
         }
     }
 
+    var sortResorts: [Resort] {
+        guard sortOrder != .regular else { return filteredResorts }
+        return filteredResorts.sorted { lhs, rhs in
+            switch sortOrder {
+            case .regular:
+                fatalError("Unreachable")
+            case .alphabetical:
+                lhs.name < rhs.name
+            case .country:
+                lhs.country < rhs.country
+            }
+        }
+    }
+
     var body: some View {
         NavigationSplitView {
-            List(filteredResorts) { resort in
+            List(sortResorts) { resort in
                 NavigationLink(value: resort) {
                     HStack {
                         Image(resort.country)
@@ -58,6 +77,37 @@ struct ContentView: View {
                 ResortView(resort: resort)
             }
             .navigationTitle("Resorts")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Menu {
+                        Button {
+                            sortOrder = .regular
+                        } label: {
+                            Label("Default", systemImage: "receipt")
+                        }
+
+                        Button {
+                            sortOrder = .alphabetical
+                        } label: {
+                            Label(
+                                "Alphabetical",
+                                systemImage: "characters.uppercase"
+                            )
+                        }
+
+                        Button {
+                            sortOrder = .country
+                        } label: {
+                            Label(
+                                "Country",
+                                systemImage: "mappin.and.ellipse.circle"
+                            )
+                        }
+                    } label: {
+                        Label("Options", systemImage: "ellipsis.circle")
+                    }
+                }
+            }
             .searchable(text: $searchFilter, prompt: "Search for a resort")
         } detail: {
             WelcomeView()
